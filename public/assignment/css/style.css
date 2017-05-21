@@ -51,6 +51,7 @@ nav.navbar.navbar-default.navbar-fixed-bottom{
     opacity: 0.9;
     padding: 5px;
     border-bottom-left-radius: 8px;
+    z-index: 99;
 }
 
 .wd-colour-scheme {
@@ -71,11 +72,21 @@ span.glyphicon.glyphicon-cog.pull-right {
 .wd-youtube-video{
     position: relative;
     padding-bottom: 56.25%;
+    padding-top: 60px; overflow: hidden;
 }
 
 .wd-youtube-video iframe{
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
 }
 
+span.glyphicon.glyphicon-user {
+    padding-right: 15px;
+}
+
+span.glyphicon.glyphicon-play{
+    padding-right: 10px;
+}
