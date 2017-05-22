@@ -48,7 +48,7 @@ nav.navbar.navbar-default.navbar-fixed-bottom{
     position: absolute;
     right: 15px;
     background: white;
-    opacity: 0.9;
+    opacity: 0.8;
     padding: 5px;
     border-bottom-left-radius: 8px;
     z-index: 99;
@@ -65,7 +65,8 @@ nav.navbar.navbar-default.navbar-fixed-bottom{
     border-color: #565054;
 }
 
-span.glyphicon.glyphicon-cog.pull-right {
+span.glyphicon.glyphicon-cog.pull-right,
+.wd-glyph-displacement {
     padding-right: 14px;
 }
 

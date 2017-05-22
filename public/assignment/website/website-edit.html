@@ -14,20 +14,45 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <p class="navbar-text pull-left">
-                <a href="website-list.html" class="navbar-link">
-            <span class="glyphicon glyphicon-chevron-left">
-            </span>
-                </a>
-            </p>
-            <a class="navbar-brand" href="#">
-                Edit Website
+        <div class="row navbar-header">
+            <div class="col-sm-4 hidden-xs">
+                <p class="navbar-text pull-left">
+                    <a href="website-list.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left">
+                        </span>
+                    </a>
+                </p>
+            <a class="navbar-brand" href="">
+               Websites
             </a>
+                <p class="navbar-text pull-right">
+                    <a href="website-new.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus wd-glyph-displacement " >
+                    </span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="col-xs-11 col-sm-7" >
+                <div class="visible-xs " >
+                    <p class="navbar-text pull-left">
+                        <a href="website-list.html"
+                           class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left">
+                        </span>
+                        </a>
+                    </p>
+                </div>
+                <div class="
+                        navbar-brand">
+                    Edit Website
+                </div>
+
+            </div>
             <p class="navbar-text pull-right">
                 <a href="website-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-ok ">
-          </span>
+                        <span class="glyphicon glyphicon-ok ">
+                        </span>
                 </a>
             </p>
         </div>
@@ -92,14 +117,16 @@
             <div class="col-xs-12 col-sm-8" >
                 <label for="name">Name</label>
                 <input class="form-control"
-                       placeholder="Spotify"
+                       placeholder="Website Name"
+                       value="Spotify"
                        id="name"/>
 
                 <label for="description">Description</label>
                 <textarea class="form-control"
                           rows="5"
-                          placeholder="Spotify is a digital music service that gives you access to millions of songs."
-                          id="description"></textarea>
+                          placeholder="Website Description"
+                          id="description">Spotify is a digital music service that gives you access to millions of songs.
+                </textarea>
                 <a href="website-list.html" class="btn btn-block btn-danger">Delete</a>
             </div>
         </div>
