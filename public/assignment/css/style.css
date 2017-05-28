@@ -9,7 +9,7 @@ body {
     padding-bottom: 60px;
 }
 
-.navbar-default {
+.navbar-default > div {
     background-color: #4e0e3b;
     border-color: #4e0e3b;
 }
@@ -60,7 +60,7 @@ nav.navbar.navbar-default.navbar-fixed-bottom{
 
 .list-group-item.active,
 .list-group-item.active:hover,
-.list-group-item.active:focus{
+.list-group-item.active:focus {
     background-color: #565054;
     border-color: #565054;
 }
