@@ -1,0 +1,73 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="widget-list.html" class="navbar-link">
+            <span class="glyphicon glyphicon-chevron-left">
+            </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Heading Editor
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="widget-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok ">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class= "container-fluid">
+
+    <label for="name">Name</label>
+    <input class="form-control"
+           ng-model="model.widget.name"
+           placeholder="name"
+           value=""
+           id="name"/>
+
+    <label for="text">Text</label>
+    <input class="form-control"
+           ng-model="model.widget.text"
+           placeholder="text"
+           value=""
+           id="text"/>
+
+    <label for="size">Size</label>
+    <select class="form-control"
+            ng-model="model.widget.size"
+            id="size">
+        <option>6</option>
+        <option>5</option>
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+      <!--  <option>6 (XS)</option>
+        <option>5 (S)</option>
+        <option>4 (M)</option>
+        <option>3 (L)</option>
+        <option>2 (XL)</option>
+        <option>1 (XXL)</option>-->
+    </select>
+
+    <a ng-click="model.updateWidget(model.widgetId,model.widget)" class="btn btn-block btn-primary">Update</a>
+    <a ng-click="model.deleteWidget(model.widgetId)" class="btn btn-block btn-danger">Delete</a>
+
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a href="../user/templates/profile.html" class="navbar-link">
+                <span class="glyphicon glyphicon-user ">
+                </span>
+            </a>
+        </p>
+    </div>
+</nav>

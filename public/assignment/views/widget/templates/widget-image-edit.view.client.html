@@ -1,17 +1,4 @@
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Video Editor</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <!--<link href="../../assets/css/bootstrap.min.css" rel="stylesheet"/>-->
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -22,7 +9,7 @@
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                YouTube Video Editor
+                Image Editor
             </a>
             <p class="navbar-text pull-right">
                 <a href="widget-list.html" class="navbar-link">
@@ -38,30 +25,41 @@
 
     <label for="name">Name</label>
     <input class="form-control"
-           placeholder="Video Title"
-           value="VEVO Music Video"
+           ng-model="model.widget.name"
+           placeholder="Image Title"
+           value="Peaceful Music"
            id="name"/>
 
     <label for="text">Text</label>
     <input class="form-control"
-           placeholder="Info"
-           value="Spotify introduces The ChainSmokers"
+           ng-model="model.widget.text"
+           placeholder="Image Description"
+           value="The healing power of music"
            id="text"/>
 
-
     <label for="url">URL</label>
-    <input class="form-control"
-           placeholder="url"
-           value="https://www.youtube.com/watch?v=K0ibBPhiaG0"
-           id="url"/>
+        <input class="form-control"
+               ng-model="model.widget.url"
+               placeholder="Spotify"
+               value=""
+               id="url"/>
 
     <label for="width">Width</label>
-    <input class="form-control"
-           placeholder="100%"
-           value="100%"
-           id="width"/>
+        <input class="form-control"
+               ng-model="model.widget.width"
+               placeholder=""
+               value="100%"
+               id="width"/>
 
-    <a href="widget-list.html" class="btn btn-block btn-danger">Delete</a>
+    <label for="file">Upload</label>
+    <input type="file"
+           id = "file"
+           class="form-control">
+
+    <a ng-click="model.updateWidget(model.widgetId,model.widget)" class="btn btn-block btn-primary">Upload</a>
+    <a ng-click="model.deleteWidget(model.widgetId)" class="btn btn-block btn-danger">Delete</a>
+
+
 
 </div>
 
@@ -69,13 +67,10 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/profile.html" class="navbar-link">
+            <a href="../user/templates/profile.html" class="navbar-link">
                 <span class="glyphicon glyphicon-user ">
                 </span>
             </a>
         </p>
     </div>
 </nav>
-
-</body>
-</html>
