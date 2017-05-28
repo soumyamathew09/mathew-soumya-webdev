@@ -1,0 +1,78 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="../user/templates/profile.html" class="navbar-link">
+            <span class="glyphicon glyphicon-chevron-left">
+            </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Websites
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#!/user/{{model.userId}}/website/new" class="navbar-link">
+                  <span class="glyphicon glyphicon-plus ">
+                  </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class= "container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item active ">
+            <div class="row">
+                <div class="col-sm-4 col-xs-10">
+                    Name
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                    Created On
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                    Last Updated
+                </div>
+                <div class="col-xs-2">
+                </div>
+            </div>
+        </li>
+
+        <li ng-repeat="website in model.websites" class="list-group-item">
+            <div class="row">
+                <div class="col-sm-4 col-xs-10">
+                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page"
+                       class="wd-colour-scheme">
+                        {{website.name}}
+                    </a>
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                        {{website.created | date}}
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                        {{website.accessed | date}}
+                </div>
+                <div class="col-xs-2">
+                    <a href="#!/user/{{model.userId}}/website/{{website._id}}"
+                       class="wd-colour-scheme">
+                    <span class="glyphicon glyphicon-cog pull-right">
+                    </span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a href="../user/templates/profile.html" class="navbar-link">
+                <span class="glyphicon glyphicon-user ">
+                </span>
+            </a>
+        </p>
+    </div>
+</nav>
