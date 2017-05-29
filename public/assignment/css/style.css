@@ -32,6 +32,12 @@ nav.navbar.navbar-default.navbar-fixed-bottom{
     width: 100%;
 }
 
+.navbar-header.home-header{
+    width: auto;
+}
+
+
+
 .navbar.navbar-default a{
     color: white;
 }
