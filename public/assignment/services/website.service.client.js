@@ -1,6 +1,6 @@
 (function(){
     angular.module('WebAppMaker')
-            .service('websiteService',websiteService);
+            .service('WebsiteService',websiteService);
     
     function websiteService() {
         this.findWebsitesByUser = findWebsitesByUser;

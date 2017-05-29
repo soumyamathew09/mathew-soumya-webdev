@@ -6,7 +6,7 @@
 
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.uid = $routeParams['uid'];
         model.wid = $routeParams['wid'];
         model.pid = $routeParams['pid'];
         model.deletePage = deletePage;
@@ -20,12 +20,12 @@
 
         function deletePage(pageId) {
             PageService.deletePage(pageId);
-            $location.url('/user/'+model.userId+'/website/'+model.wid+'/page');
+            $location.url('/user/'+model.uid+'/website/'+model.wid+'/page');
         }
         
         function updatePage(pageId,page) {
             PageService.updatePage(pageId,page);
-            $location.url('/user/'+model.userId+'/website/'+model.wid+'/page');
+            $location.url('/user/'+model.uid+'/website/'+model.wid+'/page');
         }
 
     }

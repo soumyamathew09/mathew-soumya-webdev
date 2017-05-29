@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="page-list.html"
+                <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page"
                    class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
@@ -13,7 +13,7 @@
                 Edit Page
             </a>
             <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
+                <a ng-click="model.updatePage(model.pid,model.page)" class="navbar-link">
           <span class="glyphicon glyphicon-ok ">
           </span>
                 </a>
@@ -47,7 +47,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/templates/profile.html" class="navbar-link">
+            <a href="#!/user/{{model.uid}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user ">
                 </span>
             </a>

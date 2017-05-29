@@ -38,6 +38,7 @@
         widget._id = (new Date().getTime()) + "";
         widget.pageId = pageId;
         widgets.push(widget);
+        return widget._id;
     }
 
     function findWidgetById(widgetId)  {

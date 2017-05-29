@@ -1,32 +1,32 @@
 (function(){
     angular.module('WebAppMaker')
-        .controller('EditWidgetController',EditWidgetController);
+        .controller('EditWidgetController',editWidgetController);
 
-    function EditWidgetController($routeParams,$location,WidgetService) {
+    function editWidgetController($routeParams,$location,WidgetService) {
 
         var model = this;
 
-        model.userId = $routeParams['userId'];
-        model.websiteId = $routeParams['wid'];
-        model.pageId = $routeParams['pid'];
-        model.widgetId = $routeParams['wgid'];
+        model.uid = $routeParams['uid'];
+        model.wid = $routeParams['wid'];
+        model.pid = $routeParams['pid'];
+        model.wgid = $routeParams['wgid'];
         model.deleteWidget = deleteWidget;
         model.updateWidget = updateWidget;
 
         function init(){
-            model.widget = WidgetService.findWidgetById(model.widgetId);
+            model.widget = WidgetService.findWidgetById(model.wgid);
         }
 
         init();
 
-        function deleteWidget(widgetId) {
-            WidgetService.deleteWidget(widgetId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+        function deleteWidget(wgid) {
+            WidgetService.deleteWidget(wgid);
+            $location.url('/user/'+model.uid+'/website/'+model.wid+'/page/'+model.pid+'/widget');
         }
 
-        function updateWidget(widgetId, widget) {
-            WidgetService.updateWidget(widgetId, widget);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+        function updateWidget(wgid, widget) {
+            WidgetService.updateWidget(wgid, widget);
+            $location.url('/user/'+model.uid+'/website/'+model.wid+'/page/'+model.pid+'/widget');
         }
 
     }

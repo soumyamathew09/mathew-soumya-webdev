@@ -3,16 +3,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../page/templates/page-list.html" class="navbar-link">
+                <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
                 </a>
             </p>
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" >
                 Widgets
             </a>
             <p class="navbar-text pull-right">
-                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new"
+                <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new"
                    class="navbar-link">
           <span class="glyphicon glyphicon-plus ">
           </span>
@@ -26,7 +26,7 @@
 
     <div ng-repeat="widget in model.widgets" class="wd-widget">
         <div class="wd-widget-toolbar">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"
+            <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}"
                class="wd-colour-scheme">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
@@ -49,7 +49,7 @@
             </span>
         </p>
         <p class="navbar-text pull-right">
-            <a href="../user/templates/profile.html" class="navbar-link">
+            <a href="#!/user/{{model.uid}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user ">
                 </span>
             </a>

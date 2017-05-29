@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../page/templates/page-list.html" class="navbar-link">
+                <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
                 </a>
@@ -16,9 +16,8 @@
 </nav>
 
 <div class= "container-fluid">
-    <p><a href="widget-heading.html"
-            class="panel-title
-            wd-colour-scheme"> Header
+    <p><a ng-click="model.createWidget(model.pid,'HEADING')"
+            class="panel-title wd-colour-scheme"> Header
         </a>
     </p>
     <p><a href=""
@@ -48,12 +47,12 @@
                    wd-colour-scheme"> Button
     </a>
     </p>
-    <p><a href="widget-image.html"
+    <p><a ng-click="model.createWidget(model.pid,'IMAGE')"
           class="panel-title
                    wd-colour-scheme"> Image
     </a>
     </p>
-    <p><a href="widget-youtube.html"
+    <p><a ng-click="model.createWidget(model.pid,'YOUTUBE')"
           class="panel-title
                    wd-colour-scheme"> YouTube
     </a>
@@ -75,7 +74,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/templates/profile.html" class="navbar-link">
+            <a href="#!/user/{{model.uid}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user ">
                 </span>
             </a>

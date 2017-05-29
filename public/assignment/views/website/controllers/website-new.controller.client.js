@@ -1,23 +1,23 @@
 (function(){
     angular.module('WebAppMaker')
-            .controller('NewWebsiteController',websiteNewController);
+            .controller('NewWebsiteController',newWebsiteController);
 
-    function websiteNewController($routeParams,$location,websiteService) {
+    function newWebsiteController($routeParams,$location,WebsiteService) {
 
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.uid = $routeParams['uid'];
         model.createWebsite = createWebsite;
 
         function init(){
-            model.websites =  websiteService.findWebsitesByUser(model.userId);
+            model.websites =  WebsiteService.findWebsitesByUser(model.uid);
         }
 
         init();
 
-        function createWebsite(userId,website) {
-            websiteService.createWebsite(userId,website);
-            $location.url('/user/'+model.userId+'/website');
+        function createWebsite(uid,website) {
+            WebsiteService.createWebsite(uid,website);
+            $location.url('/user/'+model.uid+'/website');
         }
 
     }

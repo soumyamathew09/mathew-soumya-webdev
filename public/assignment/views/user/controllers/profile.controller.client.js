@@ -1,15 +1,25 @@
 (function () {
     angular
         .module('WebAppMaker')
-        .controller('profileController',profileController);
+        .controller('ProfileController',profileController);
     
-    function profileController($location,$routeParams,userService) {
+    function profileController($location,$routeParams,UserService) {
 
         var model = this;
 
-        var userId = $routeParams['userId'];
+        var uid = $routeParams['uid'];
+        model.uid = uid
+        model.updateUser = updateUser;
 
-        model.user = userService.findUserById(userId);
+        function init() {
+            model.user = UserService.findUserById(uid);
+        }
+        init();
+
+        function updateUser(uid,user) {
+            UserService.updateUser(uid,user);
+            $location.url('/user/' + uid)
+        }
 
     }
 })();

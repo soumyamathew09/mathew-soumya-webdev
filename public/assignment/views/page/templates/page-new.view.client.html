@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#!/user/{{model.userId}}/website/{{website._id}}/page"
+                <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page"
                    class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
@@ -13,7 +13,7 @@
                 New Page
             </a>
             <p class="navbar-text pull-right">
-                <a href="#!/user/{{model.userId}}/website/{{website._id}}/page"
+                <a ng-click="model.createPage(model.wid,page)"
                    class="navbar-link">
           <span class="glyphicon glyphicon-ok ">
           </span>
@@ -34,11 +34,11 @@
 
     <label for="title">Title</label>
     <input class="form-control"
-           ng-model="page.title"
+           ng-model="page.description"
            placeholder="Page Title"
            value=""
            id="title"/>
-    <a ng-click="model.createPage(model.websiteId,page)"
+    <a ng-click="model.createPage(model.wid,page)"
        class="btn btn-block btn-success">Create</a>
 
 </div>
@@ -47,7 +47,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/templates/profile.html" class="navbar-link">
+            <a href="#!/user/{{model.uid}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user ">
                 </span>
             </a>

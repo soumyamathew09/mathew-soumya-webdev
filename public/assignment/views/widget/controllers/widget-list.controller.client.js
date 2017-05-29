@@ -1,18 +1,18 @@
 (function(){
     angular
         .module('WebAppMaker')
-        .controller('WidgetListController',WidgetListController);
+        .controller('WidgetListController',widgetListController);
 
-    function WidgetListController($routeParams,$sce,WidgetService) {
+    function widgetListController($routeParams,$sce,WidgetService) {
 
         var model = this;
-        model.userId = $routeParams['userId'];
-        model.websiteId = $routeParams['wid'];
-        model.pageId = $routeParams['pid'];
+        model.uid = $routeParams['uid'];
+        model.wid = $routeParams['wid'];
+        model.pid = $routeParams['pid'];
 
 
         function init() {
-            model.widgets = WidgetService.findWidgetsByPageId(model.pageId);
+            model.widgets = WidgetService.findWidgetsByPageId(model.pid);
             model.trust = trust;
             model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
             model.widgetUrl = widgetUrl;
@@ -35,9 +35,5 @@
             return url;
         }
 
-        function widgetEditUrl(widget) {
-            var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';
-            return url;
-        }
-    }
+     }
 })();

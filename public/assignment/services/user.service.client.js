@@ -1,13 +1,16 @@
 (function () {
     angular
         .module('WebAppMaker')
-        .service('userService',userService);
+        .service('UserService',userService);
     
     function userService() {
+
         this.createUser = createUser;
         this.findUserById = findUserById;
         this.findUserByCredentials = findUserByCredentials;
         this.findUserByUsername = findUserByUsername;
+        this.updateUser = updateUser;
+        this.deleteUser = deleteUser;
 
     }
 
@@ -53,6 +56,23 @@
         return user;
     }
 
+    function updateUser(userId, user) {
+        var u = findUserById(userId);
+        var index = users.indexOf(u);
+
+        users.splice(index,1);
+        u.firstName = user.firstName;
+        u.lastName = user.lastName;
+        u.email = user.email;
+
+        users.push(u);
+    }
+
+    function deleteUser(userId){
+        var user = findUserById(userId);
+        var index = users.indexOf(user);
+        users.splice(index,1);
+    }
 
     
 })();

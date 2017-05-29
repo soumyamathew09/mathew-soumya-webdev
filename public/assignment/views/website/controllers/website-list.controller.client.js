@@ -1,15 +1,15 @@
 (function(){
     angular.module('WebAppMaker')
-            .controller('websiteListController',websiteListController);
+            .controller('WebsiteListController',websiteListController);
 
-    function websiteListController($routeParams,websiteService) {
+    function websiteListController($routeParams,WebsiteService) {
 
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.uid = $routeParams['uid'];
 
         function init(){
-            model.websites =  websiteService.findWebsitesByUser(model.userId);
+            model.websites =  WebsiteService.findWebsitesByUser(model.uid);
         }
         init();
     }

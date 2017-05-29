@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="widget-list.html" class="navbar-link">
+                <a  href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
                 </a>
@@ -12,7 +12,7 @@
                 YouTube Video Editor
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-list.html" class="navbar-link">
+                <a ng-click="model.updateWidget(model.wgid,model.widget)" class="navbar-link">
           <span class="glyphicon glyphicon-ok ">
           </span>
                 </a>
@@ -52,8 +52,8 @@
            value=""
            id="width"/>
 
-    <a ng-click="model.updateWidget(model.widgetId,model.widget)" class="btn btn-block btn-primary">Upload</a>
-    <a ng-click="model.deleteWidget(model.widgetId)" class="btn btn-block btn-danger">Delete</a>
+    <a ng-click="model.updateWidget(model.wgid,model.widget)" class="btn btn-block btn-primary">Upload</a>
+    <a ng-click="model.deleteWidget(model.wgid)" class="btn btn-block btn-danger">Delete</a>
 
 
 </div>
@@ -62,7 +62,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/templates/profile.html" class="navbar-link">
+            <a href="#!/user/{{model.uid}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user ">
                 </span>
             </a>

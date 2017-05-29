@@ -6,14 +6,14 @@
 
         var model = this;
 
-        model.userId = $routeParams['userId'];
-        model.websiteId = $routeParams['wid'];
+        model.uid = $routeParams['uid'];
+        model.wid = $routeParams['wid'];
         model.createPage = createPage;
 
 
-        function createPage(userId,website) {
-            PageService.createPage(userId,website);
-            $location.url('/user/'+model.userId+'/website/'+ model.websiteId + '/page');
+        function createPage(uid,page) {
+            PageService.createPage(uid,page);
+            $location.url('/user/'+model.uid+'/website/'+ model.wid + '/page');
         }
 
     }
