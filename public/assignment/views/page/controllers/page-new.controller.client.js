@@ -12,8 +12,11 @@
 
 
         function createPage(uid,page) {
-            PageService.createPage(uid,page);
-            $location.url('/user/'+model.uid+'/website/'+ model.wid + '/page');
+            PageService
+                    .createPage(uid,page)
+                    .then(function () {
+                        $location.url('/user/'+model.uid+'/website/'+ model.wid + '/page');
+                    });
         }
 
     }

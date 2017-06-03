@@ -13,19 +13,32 @@
         model.updatePage = updatePage;
 
         function init(){
-            model.page = PageService.findPageById(model.pid);
+            PageService
+                .findPageById(model.pid)
+                .then(renderPage);
         }
 
         init();
 
         function deletePage(pageId) {
-            PageService.deletePage(pageId);
-            $location.url('/user/'+model.uid+'/website/'+model.wid+'/page');
+            PageService
+                .deletePage(pageId)
+                .then(function () {
+                    $location.url('/user/'+model.uid+'/website/'+model.wid+'/page');
+                });
+
         }
         
         function updatePage(pageId,page) {
-            PageService.updatePage(pageId,page);
-            $location.url('/user/'+model.uid+'/website/'+model.wid+'/page');
+            PageService
+                .updatePage(pageId,page)
+                .then(function () {
+                    $location.url('/user/'+model.uid+'/website/'+model.wid+'/page');
+                });
+        }
+
+        function renderPage(page) {
+            model.page = page;
         }
 
     }
