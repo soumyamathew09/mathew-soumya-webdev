@@ -10,15 +10,24 @@
         model.createWebsite = createWebsite;
 
         function init(){
-            model.websites =  WebsiteService.findWebsitesByUser(model.uid);
+            WebsiteService
+                .findWebsitesByUser(model.uid)
+                .then(renderWebsites);
+
         }
 
         init();
 
         function createWebsite(uid,website) {
-            WebsiteService.createWebsite(uid,website);
-            $location.url('/user/'+model.uid+'/website');
+            WebsiteService
+                .createWebsite(uid,website)
+                .then(function () {
+                    $location.url('/user/'+model.uid+'/website');
+                })
         }
 
+        function renderWebsites(websites) {
+            model.websites = websites;
+        }
     }
 })();
