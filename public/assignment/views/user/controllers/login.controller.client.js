@@ -9,12 +9,20 @@
         model.login = login;
 
         function login (username,password) {
-            var found = UserService.findUserByCredentials(username,password);
-            if(found !== null){
-                $location.url('/user/' + found._id)
-            }else {
-                model.message = "Incorrect username or password. Please try again.";
-            }
+            UserService
+                .findUserByCredentials(username,password)
+                .then(function (found) {
+                    if(found !== null){
+                        $location.url('/user/' + found._id)
+                    }else {
+                        model.message = "Incorrect username or password. Please try again.";
+                    }
+                },
+                    function () {
+                        model.message = "Incorrect username or password. Please try again.";
+                    }
+                );
+
         }
     }
 })();
