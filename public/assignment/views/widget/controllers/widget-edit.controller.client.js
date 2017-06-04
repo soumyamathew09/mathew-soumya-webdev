@@ -14,19 +14,28 @@
         model.updateWidget = updateWidget;
 
         function init(){
-            model.widget = WidgetService.findWidgetById(model.wgid);
+            WidgetService.findWidgetById(model.wgid)
+                .then(renderWidget);
         }
 
         init();
 
+        function renderWidget(widget) {
+            model.widget = widget;
+        }
+
         function deleteWidget(wgid) {
-            WidgetService.deleteWidget(wgid);
-            $location.url('/user/'+model.uid+'/website/'+model.wid+'/page/'+model.pid+'/widget');
+            WidgetService.deleteWidget(wgid)
+                .then(function () {
+                    $location.url('/user/'+model.uid+'/website/'+model.wid+'/page/'+model.pid+'/widget');
+                });
         }
 
         function updateWidget(wgid, widget) {
-            WidgetService.updateWidget(wgid, widget);
-            $location.url('/user/'+model.uid+'/website/'+model.wid+'/page/'+model.pid+'/widget');
+            WidgetService.updateWidget(wgid, widget)
+                .then(function () {
+                    $location.url('/user/'+model.uid+'/website/'+model.wid+'/page/'+model.pid+'/widget');
+                });
         }
 
     }

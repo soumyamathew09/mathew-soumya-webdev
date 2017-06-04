@@ -12,12 +12,20 @@
 
 
         function init() {
-            model.widgets = WidgetService.findWidgetsByPageId(model.pid);
+            WidgetService
+                .findWidgetsByPageId(model.pid)
+                .then(renderWidgets);
             model.trust = trust;
             model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
             model.widgetUrl = widgetUrl;
+            model.widgetCog = widgetCog;
         }
+
         init();
+
+        function renderWidgets(response) {
+            model.widgets = response;
+        }
 
         function trust(html){
             return $sce.trustAsHtml(html);
@@ -33,6 +41,13 @@
         function widgetUrl(widget) {
             var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.html';
             return url;
+        }
+
+        function widgetCog(widget) {
+            if (widget.widgetType === 'HEADING' ||widget.widgetType === 'IMAGE' ||widget.widgetType === 'YOUTUBE' ){
+                var url = 'views/widget/templates/widget-cog.view.client.html';
+                return url;
+            }
         }
 
      }

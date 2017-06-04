@@ -14,11 +14,14 @@
 
         function createWidget(pid,widgetType) {
             var widget = {};
-            widget.widgetType = widgetType
-            var wgid = WidgetService.createWidget(pid,widget);
-            $location.url('/user/'+model.uid+'/website/'+ model.wid + '/page/'
-                + model.pid + "/widget/"+wgid);
+            widget.widgetType = widgetType;
+            WidgetService
+                .createWidget(pid,widget)
+                .then(function (widgetId) {
+                    var wgid = widgetId;
+                    $location.url('/user/'+model.uid+'/website/'+ model.wid + '/page/'
+                        + model.pid + "/widget/"+wgid);
+                });
         }
-
     }
 })();
