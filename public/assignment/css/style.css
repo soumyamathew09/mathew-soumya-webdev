@@ -1,12 +1,18 @@
 input.form-control,
 textarea.form-control,
-select.form-control {
+select.form-control,
+button.btn.btn-block.btn-primary.wd-upload-btn {
     margin-bottom: 5px;
 }
 
 body {
     padding-top: 60px;
     padding-bottom: 60px;
+}
+
+.container,
+.wd-widgetlist{
+    padding-bottom: 40px;
 }
 
 .navbar-default > div {
