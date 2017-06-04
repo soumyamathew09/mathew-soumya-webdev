@@ -15,8 +15,8 @@
 
             var url = '/api/assignment/user/' + userId + '/website';
             return $http.get(url)
-                .then(function (response) {
-                    return response.data;
+                        .then(function (response) {
+                            return response.data;
                 });
 
         }
@@ -25,24 +25,24 @@
 
             var url = '/api/assignment/website/'+ websiteId;
             return $http.get(url)
-                    .then(function (response) {
-                        return response.data;
+                         .then(function (response) {
+                            return response.data;
                     });
         }
 
         function deleteWebsite(websiteId) {
             var url = '/api/assignment/website/'+ websiteId;
             return $http.delete(url)
-                .then(function (response) {
-                    return response.data;
+                        .then(function (response) {
+                        return response.data;
                 });
         }
 
         function createWebsite(userId, website) {
             var url = '/api/assignment/user/'+ userId +'/website';
             return $http.post(url,website)
-                .then(function (response) {
-                    return response.data;
+                        .then(function (response) {
+                        return response.data;
                 });
         }
 

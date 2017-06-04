@@ -1,5 +1,11 @@
 var app = require('../../express');
 
+app.get('/api/assignment/user/:userId/website',findAllWebsitesForUser);
+app.post('/api/assignment/user/:userId/website',createWebsite);
+app.get('/api/assignment/website/:websiteId',findWebsiteById);
+app.put('/api/assignment/website/:websiteId',updateWebsite);
+app.delete('/api/assignment/website/:websiteId',deleteWebsite);
+
 var websites =
     [
         { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -10,13 +16,6 @@ var websites =
         { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Lorem" },
         { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
     ];
-
-
-app.get('/api/assignment/user/:userId/website',findAllWebsitesForUser);
-app.post('/api/assignment/user/:userId/website',createWebsite);
-app.get('/api/assignment/website/:websiteId',findWebsiteById);
-app.put('/api/assignment/website/:websiteId',updateWebsite);
-app.delete('/api/assignment/website/:websiteId',deleteWebsite);
 
 function findAllWebsitesForUser(req,res) {
     var userId = req.params['userId'];
