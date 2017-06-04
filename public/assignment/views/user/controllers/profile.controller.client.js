@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .controller('ProfileController',profileController);
     
-    function profileController($location,$routeParams,$http,UserService) {
+    function profileController($location,$routeParams,UserService) {
 
         var model = this;
 

@@ -8,20 +8,24 @@
         var model = this;
         model.register = register;
 
-
-
         function register (username,password,password2) {
+
             UserService
                 .findUserByUsername(username)
                 .then(
-                    showErrorMessage,
-                    registerNewUser(username,password)
+                    function () {
+                        showErrorMessage()
+                    },
+                    function () {
+                       registerNewUser(username,password)
+                    }
                 )
 
         };
 
             function showErrorMessage(){
                 model.error = 'sorry this username is taken';
+                return;
             }
 
             function registerNewUser(username,password) {
