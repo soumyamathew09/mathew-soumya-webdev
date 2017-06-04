@@ -16,6 +16,9 @@
             PageService
                 .findPageById(model.pid)
                 .then(renderPage);
+            PageService
+                .findPageByWebsiteId(model.wid)
+                .then(renderPages);
         }
 
         init();
@@ -41,5 +44,8 @@
             model.page = page;
         }
 
+        function renderPages(pages) {
+            model.pages = pages;
+        }
     }
 })();
