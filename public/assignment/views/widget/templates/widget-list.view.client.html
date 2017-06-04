@@ -22,11 +22,11 @@
     </div>
 </nav>
 
-<div class= "container-fluid">
+<div class= "container-fluid wd-widgetlist">
 
     <div ng-repeat="widget in model.widgets" wbdv-sortable class="wd-widget">
         <div class="wd-widget-toolbar">
-            <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}"
+            <a ng-click=model.widgetCog(widget)
                class="wd-colour-scheme">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
