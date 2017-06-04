@@ -114,7 +114,7 @@ function uploadImage(req, res) {
     widget = getWidgetById(widgetId);
     widget.url = '/assignment/uploads/'+filename;
 
-    var callbackUrl   = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
+    var callbackUrl   = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
 
     res.redirect(callbackUrl);
 }
