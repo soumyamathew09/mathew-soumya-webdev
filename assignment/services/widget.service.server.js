@@ -101,23 +101,29 @@ function uploadImage(req, res) {
     var width         = req.body.width;
     var myFile        = req.file;
 
+
     var userId = req.body.userId;
     var websiteId = req.body.websiteId;
     var pageId = req.body.pageId;
 
-    var originalname  = myFile.originalname; // file name on user's computer
-    var filename      = myFile.filename;     // new file name in upload folder
-    var path          = myFile.path;         // full path of uploaded file
-    var destination   = myFile.destination;  // folder where file is saved to
-    var size          = myFile.size;
-    var mimetype      = myFile.mimetype;
+    if(myFile !== undefined) {
+        var originalname = myFile.originalname; // file name on user's computer
+        var filename = myFile.filename;     // new file name in upload folder
+        var path = myFile.path;         // full path of uploaded file
+        var destination = myFile.destination;  // folder where file is saved to
+        var size = myFile.size;
+        var mimetype = myFile.mimetype;
 
-    widget = getWidgetById(widgetId);
-    widget.url = '/assignment/uploads/'+filename;
+        widget = getWidgetById(widgetId);
+        widget.url = '/assignment/uploads/' + filename;
 
-    var callbackUrl   = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+        var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId;
 
-    res.redirect(callbackUrl);
+        res.redirect(callbackUrl);
+    }
+    else{
+        res.sendStatus(404);
+    }
 }
 
 

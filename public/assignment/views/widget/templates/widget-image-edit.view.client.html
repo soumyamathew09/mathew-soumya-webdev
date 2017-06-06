@@ -39,17 +39,16 @@
     <label for="url">URL</label>
         <input class="form-control"
                ng-model="model.widget.url"
-               placeholder="Spotify"
+               placeholder=""
                value=""
                id="url"/>
 
-    <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{model.wgid}}/search"
-       class="btn btn-block btn-info">Search Flickr</a>
+
 
     <label for="width">Width</label>
         <input class="form-control"
                ng-model="model.widget.width"
-               placeholder=""
+               placeholder="100%"
                value="100%"
                id="width"/>
 
@@ -65,8 +64,8 @@
         <input  name="widgetId"  value="{{model.wgid}}"   style="display: none"/>
         <button type="submit"    class="btn btn-block btn-primary wd-upload-btn">Upload Image</button>
     </form>
-
-
+    <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{model.wgid}}/search"
+       class="btn btn-block btn-info">Search Flickr</a>
     <a ng-click="model.updateWidget(model.wgid,model.widget)" class="btn btn-block btn-success">Update</a>
     <a ng-click="model.deleteWidget(model.wgid)" class="btn btn-block btn-danger">Delete</a>
 
