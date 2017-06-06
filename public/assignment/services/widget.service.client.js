@@ -9,6 +9,7 @@
         this.findWidgetById = findWidgetById;
         this.updateWidget = updateWidget;
         this.deleteWidget = deleteWidget;
+        this.sortWidget = sortWidget;
 
         function findWidgetsByPageId(pageId) {
 
@@ -54,6 +55,14 @@
                     return response.data;
                 });
 
+        }
+        
+        function sortWidget(pageId,initial,final) {
+            var url = '/api/assignment/page/'+pageId+'/widget?initial='+ initial+'&final='+final;
+            return $http.put(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
 })();

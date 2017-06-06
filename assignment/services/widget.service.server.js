@@ -8,6 +8,7 @@ app.get('/api/assignment/widget/:widgetId',findWidgetById);
 app.put('/api/assignment/widget/:widgetId',updateWidget);
 app.delete('/api/assignment/widget/:widgetId',deleteWidget);
 app.post ('/api/assignment/upload', upload.single('myFile'), uploadImage);
+app.put('/api/assignment/page/:pageId/widget', sortWidget);
 
 var widgets = [
     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -127,4 +128,20 @@ function getWidgetById(widgetId) {
         }
     }
     return null;
+}
+
+function sortWidget(req,res) {
+    var initial = req.query['initial'];
+    var final = req.query['final'];
+    if(initial && final){
+        var widget = widgets[initial];
+        var arrayClone = widgets.slice();
+        arrayClone.splice(initial,1);
+        arrayClone.splice(final,0,widget);
+
+        widgets = arrayClone;
+        res.sendStatus(200);
+        return;
+    }
+    res.sendStatus(404);
 }

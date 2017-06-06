@@ -19,6 +19,7 @@
             model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
             model.widgetUrl = widgetUrl;
             model.widgetCog = widgetCog;
+            model.sortWidget = sortWidget;
         }
 
         init();
@@ -51,6 +52,14 @@
                 $location.url('/user/'+model.uid+'/website/'+ model.wid + '/page/'
                     + model.pid + "/widget/"+widget._id);
             }
+        }
+
+        function sortWidget(initial,final) {
+            var pid = $routeParams['pid'];
+            WidgetService.sortWidget(pid,initial,final)
+                .then(function (response) {
+                    return response.data
+                });
         }
      }
 })();

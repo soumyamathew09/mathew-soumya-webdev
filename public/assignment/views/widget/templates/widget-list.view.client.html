@@ -22,19 +22,17 @@
     </div>
 </nav>
 
-<div class= "container-fluid wd-widgetlist">
-
-    <div ng-repeat="widget in model.widgets" wbdv-sortable class="wd-widget">
-        <div class="wd-widget-toolbar">
-            <a ng-click=model.widgetCog(widget)
-               class="wd-colour-scheme">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
+<div wbdv-sortable sort-widget="model.sortWidget(initial,final)" class= "container-fluid wd-widgetlist">
+        <div ng-repeat="widget in model.widgets" class="wd-widget">
+            <div class="wd-widget-toolbar">
+                <a ng-click=model.widgetCog(widget)
+                   class="wd-colour-scheme">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </div>
+            <div ng-include="model.widgetUrl(widget)"></div>
         </div>
-        <div ng-include="model.widgetUrl(widget)"></div>
-    </div>
-
 </div>
 
 
