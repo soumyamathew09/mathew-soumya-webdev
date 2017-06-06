@@ -33,6 +33,8 @@ function createWebsite(req,res) {
     var userId = req.params['userId'];
     var website = req.body;
     website._id = (new Date().getTime()) + "";
+    website.created = new Date();
+    website.accessed = new Date();
     website.developerId = userId;
     websites.push(website);
     res.sendStatus(200);
