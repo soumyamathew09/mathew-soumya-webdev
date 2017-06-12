@@ -30,9 +30,9 @@
             model.website = angular.copy(website);
         }
 
-        function deleteWebsite(websiteId) {
+        function deleteWebsite(userId,websiteId) {
             WebsiteService
-                .deleteWebsite(websiteId)
+                .deleteWebsite(userId,websiteId)
                 .then(
                     function () {
                     $location.url('/user/'+model.uid+'/website');

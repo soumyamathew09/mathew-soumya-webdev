@@ -23,7 +23,8 @@
                 .createWebsite(uid,website)
                 .then(function () {
                     $location.url('/user/'+model.uid+'/website');
-                })
+                });
+            init();
         }
 
         function renderWebsites(websites) {

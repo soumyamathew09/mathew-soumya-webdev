@@ -30,8 +30,8 @@
                     });
         }
 
-        function deleteWebsite(websiteId) {
-            var url = '/api/assignment/website/'+ websiteId;
+        function deleteWebsite(userId,websiteId) {
+            var url = '/api/assignment/user/' + userId +'/website/'+ websiteId;
             return $http.delete(url)
                         .then(function (response) {
                         return response.data;
