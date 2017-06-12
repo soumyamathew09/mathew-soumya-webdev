@@ -1,10 +1,11 @@
 var app = require('../../express')
+var pageModel = require('../model/page/page.model.server');
 
 app.get('/api/assignment/website/:websiteId/page',findAllPagesForWebsite);
 app.post('/api/assignment/website/:websiteId/page',createPage);
 app.get('/api/assignment/page/:pageId',findPageById);
 app.put('/api/assignment/page/:pageId',updatePage);
-app.delete('/api/assignment/page/:pageId',deletePage);
+app.delete('/api/assignment/website/:websiteId/page/:pageId',deletePage);
 
 var pages = [
     { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
@@ -14,16 +15,12 @@ var pages = [
 
 function findAllPagesForWebsite(req,res) {
 
-    var results = [];
     var websiteId = req.params['websiteId'];
-
-    for (p in pages) {
-        if (pages[p].websiteId === websiteId) {
-            results.push(pages[p]);
-        }
-    }
-    res.json(results);
-    return;
+    return pageModel.findAllPagesForWebsite(websiteId)
+        .then(function (results) {
+            res.json(results);
+            return;
+        });
 
 }
 
@@ -31,48 +28,40 @@ function createPage(req,res) {
 
     var websiteId = req.params['websiteId'];
     var page = req.body;
-    page._id = (new Date().getTime()) + "";
-    page.websiteId = websiteId;
-    pages.push(page);
-    res.sendStatus(200);
-    return;
+    return pageModel.createPage(websiteId,page)
+        .then(function () {
+            res.sendStatus(200);
+            return;
+        });
 
 }
 
 function findPageById(req,res) {
     var pageId = req.params['pageId'];
-    for (p in pages) {
-        if(pages[p]._id === pageId){
-            res.json(pages[p]);
+    return pageModel.findPageById(pageId)
+        .then(function (page) {
+            res.json(page);
             return;
-        }
-    }
-    res.sendStatus(404);
+        });
 }
 
 function updatePage(req,res) {
     var pageId = req.params['pageId'];
     var page = req.body;
-    for (p in pages) {
-        if(pages[p]._id === pageId){
-            pages[p].name = page.name;
-            pages[p].description = page.description;
+    return pageModel.updatePage(pageId,page)
+        .then(function () {
             res.sendStatus(200);
             return;
-        }
-    }
-    res.sendStatus(404);
+        });
 }
 
 function deletePage(req,res) {
     var pageId = req.params['pageId'];
+    var websiteId = req.params['websiteId'];
 
-    for (p in pages) {
-        if(pages[p]._id === pageId) {
-            pages.splice(p, 1);
+    return pageModel.deletePage(websiteId,pageId)
+        .then(function () {
             res.sendStatus(200);
             return;
-        }
-    }
-    res.sendStatus(404);
+        });
 }
