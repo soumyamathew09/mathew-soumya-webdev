@@ -13,14 +13,18 @@
             UserService
                 .findUserByUsername(username)
                 .then(
-                    function () {
-                        showErrorMessage()
+                    function (user) {
+                     if(user !== null){
+                         showErrorMessage();
+                     }
+                     else {
+                         registerNewUser(username,password);
+                     }
                     },
                     function () {
-                       registerNewUser(username,password)
+                        registerNewUser(username,password)
                     }
                 )
-
         };
 
             function showErrorMessage(){
