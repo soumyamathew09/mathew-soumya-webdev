@@ -3,13 +3,13 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a  href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
+                <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                YouTube Video Editor
+                Text Editor
             </a>
             <p class="navbar-text pull-right">
                 <a ng-click="model.updateWidget(model.wgid,model.widget)" class="navbar-link">
@@ -25,36 +25,36 @@
 
     <label for="name">Name</label>
     <input class="form-control"
-           ng-model = "model.widget.name"
-           placeholder="Video Title"
+           ng-model="model.widget.name"
+           placeholder="name"
            value=""
            id="name"/>
 
     <label for="text">Text</label>
     <input class="form-control"
-           ng-model = "model.widget.text"
-           placeholder="Info"
+           ng-model="model.widget.text"
+           placeholder="text"
            value=""
            id="text"/>
 
-
-    <label for="url">URL</label>
+    <label for="rows">Rows</label>
     <input class="form-control"
-           ng-model = "model.widget.url"
-           placeholder="url"
-           value=""
-           id="url"/>
+           ng-model="model.widget.rows"
+           type="number"
+           id="rows"/>
 
-    <label for="width">Width</label>
+    <label for="placeholder">Placeholder</label>
     <input class="form-control"
-           ng-model = "model.widget.width"
-           placeholder="100%"
-           value=""
-           id="width"/>
+           ng-model="model.widget.placeholder"
+           id="placeholder"/>
 
-    <a ng-click="model.updateWidget(model.wgid,model.widget)" class="btn btn-block btn-primary">Upload</a>
+    <label for="formatted">Formatted</label>
+    <input ng-model="model.widget.formatted"
+           type="checkbox"
+           id="formatted"/>
+
+    <a ng-click="model.updateWidget(model.wgid,model.widget)" class="btn btn-block btn-primary">Update</a>
     <a ng-click="model.deleteWidget(model.pid,model.wgid)" class="btn btn-block btn-danger">Delete</a>
-
 
 </div>
 

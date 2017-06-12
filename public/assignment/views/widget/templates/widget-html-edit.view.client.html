@@ -3,13 +3,13 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a  href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
+                <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                YouTube Video Editor
+                HTML Editor
             </a>
             <p class="navbar-text pull-right">
                 <a ng-click="model.updateWidget(model.wgid,model.widget)" class="navbar-link">
@@ -25,36 +25,22 @@
 
     <label for="name">Name</label>
     <input class="form-control"
-           ng-model = "model.widget.name"
-           placeholder="Video Title"
+           ng-model="model.widget.name"
+           placeholder="name"
            value=""
            id="name"/>
 
-    <label for="text">Text</label>
-    <input class="form-control"
-           ng-model = "model.widget.text"
-           placeholder="Info"
-           value=""
-           id="text"/>
+
+    <div ng-model="model.widget.text"
+         text-angular
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+    </div>
 
 
-    <label for="url">URL</label>
-    <input class="form-control"
-           ng-model = "model.widget.url"
-           placeholder="url"
-           value=""
-           id="url"/>
-
-    <label for="width">Width</label>
-    <input class="form-control"
-           ng-model = "model.widget.width"
-           placeholder="100%"
-           value=""
-           id="width"/>
-
-    <a ng-click="model.updateWidget(model.wgid,model.widget)" class="btn btn-block btn-primary">Upload</a>
+    <a ng-click="model.updateWidget(model.wgid,model.widget)" class="btn btn-block btn-primary">Update</a>
     <a ng-click="model.deleteWidget(model.pid,model.wgid)" class="btn btn-block btn-danger">Delete</a>
-
 
 </div>
 

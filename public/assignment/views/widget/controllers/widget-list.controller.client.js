@@ -41,14 +41,15 @@
 
         function widgetUrl(widget) {
             if (widget.widgetType === 'HEADING' ||widget.widgetType === 'IMAGE' ||widget.widgetType === 'YOUTUBE'||
-                    widget.widgetType ==='HTML') {
+                    widget.widgetType ==='HTML' || widget.widgetType ==='TEXT' ) {
                 var url = 'views/widget/templates/widget-' + widget.widgetType.toLowerCase() + '.view.client.html';
                 return url;
             }
         }
 
         function widgetCog(widget) {
-            if (widget.widgetType === 'HEADING' ||widget.widgetType === 'IMAGE' ||widget.widgetType === 'YOUTUBE' ){
+            if (widget.widgetType === 'HEADING' ||widget.widgetType === 'IMAGE' ||widget.widgetType === 'YOUTUBE'
+                ||widget.widgetType === 'HTML' || widget.widgetType ==='TEXT' ){
                 $location.url('/user/'+model.uid+'/website/'+ model.wid + '/page/'
                     + model.pid + "/widget/"+widget._id);
             }
