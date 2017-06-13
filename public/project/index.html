@@ -1,10 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ConcertFever">
 <head>
     <meta charset="UTF-8">
+    <script src="../assets/js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="../assets/js/vendor/jquery-ui.min.js"></script>
+
+    <script src ="../assets/angular/angular.min.js"></script>
+    <script src ="../assets/angular/angular-route.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src="services/music.service.client.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Bootstrap theme -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+
+
     <title>Project Home Page</title>
 </head>
+
 <body>
-    <h1>Project Home Page</h1>
+    <div>
+
+
+    <div class="container-fluid" ng-controller="SearchController as model">
+        <h1>Artist Finder</h1>
+        <div class="input-group">
+            <input ng-model="searchText"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter the artist name">
+            <span class="input-group-btn">
+            <a ng-click="model.searchArtistsByName(searchText)" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 " >
+
+                <ul ng-repeat="artist in model.results" class="list-group" >
+
+                    <li class="list-group-item">
+                        <a  ng-click="model.searchArtist(artist.Name)">{{artist.Name}}</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="col-xs-6" >
+                <div ng-show="model.error" class="alert alert-info" style="position: fixed">{{model.error}}</div>
+                <div ng-show="model.artist" style="position: fixed">
+                <h3>Artist Info</h3>
+                <img class="img-fluid" ng-src="{{model.artist.thumb_url}}">
+                    <div>
+                    <label>Followers:</label>
+                    <div>{{model.artist.tracker_count}}</div>
+                    <label>Facebook Page</label>
+                    <a href="{{model.artist.facebook_page_url}}">{{model.artist.facebook_page_url}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!--<div class="input-group">
+            <input ng-model="searchArtist"
+                   type="text"
+                   class="form-control"
+                   placeholder="Search Artist">
+            <span class="input-group-btn">
+            <a ng-click="model.searchBandsInTown(searchArtist)" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+        </div>
+        <div >
+            <div>
+                <img ng-click="model.selectPhoto(photo)" class="img-responsive img-thumbnail"
+                     ng-src="{{model.artist.thumb_url}}"/>
+                <div>{{model.artist.name}}</div>
+            </div>
+        </div>-->
+    </div>
 </body>
 </html>
