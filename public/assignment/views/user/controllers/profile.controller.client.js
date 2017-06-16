@@ -3,18 +3,17 @@
         .module('WebAppMaker')
         .controller('ProfileController',profileController);
     
-    function profileController($location,$routeParams,UserService) {
+    function profileController($location,currentUser,UserService) {
 
         var model = this;
 
-        var uid = $routeParams['uid'];
-        model.uid = uid
+        model.uid = currentUser._id;
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
+        model.logout = logout;
 
         function init() {
-            UserService.findUserById(uid)
-                .then(renderUser ,userError);
+            renderUser(currentUser);
         }
         init();
 
@@ -46,6 +45,14 @@
                         model.error("Unable to unregister user");
                     }
                 );
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                });
         }
     }
 })();
