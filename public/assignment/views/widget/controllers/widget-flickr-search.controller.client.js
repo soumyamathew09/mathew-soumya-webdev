@@ -2,10 +2,10 @@
     angular.module('WebAppMaker')
         .controller('FlickrImageSearchController', flickrImageSearchController);
 
-    function flickrImageSearchController($routeParams,$location,FlickrService,WidgetService) {
+    function flickrImageSearchController($routeParams,currentUser,$location,FlickrService,WidgetService) {
 
         var model = this;
-        model.uid = $routeParams['uid'];
+        model.uid = currentUser._id;
         model.wid = $routeParams['wid'];
         model.pid = $routeParams['pid'];
         model.wgid = $routeParams['wgid'];
@@ -44,7 +44,7 @@
             WidgetService
                 .updateWidget(model.wgid,w)
                 .then(function () {
-                    $location.url('/user/'+model.uid+'/website/'+model.wid+'/page/'+model.pid+'/widget/'+model.wgid);
+                    $location.url('/website/'+model.wid+'/page/'+model.pid+'/widget/'+model.wgid);
                 });
         }
 

@@ -2,11 +2,11 @@
     angular.module('WebAppMaker')
         .controller('EditWidgetController',editWidgetController);
 
-    function editWidgetController($routeParams,$location,WidgetService) {
+    function editWidgetController($routeParams,currentUser,$location,WidgetService) {
 
         var model = this;
 
-        model.uid = $routeParams['uid'];
+        model.uid = currentUser._id;
         model.wid = $routeParams['wid'];
         model.pid = $routeParams['pid'];
         model.wgid = $routeParams['wgid'];
@@ -27,15 +27,21 @@
         function deleteWidget(pid,wgid) {
             WidgetService.deleteWidget(pid,wgid)
                 .then(function () {
-                    $location.url('/user/'+model.uid+'/website/'+model.wid+'/page/'+model.pid+'/widget');
+                    $location.url('/website/'+model.wid+'/page/'+model.pid+'/widget');
                 });
         }
 
         function updateWidget(wgid, widget) {
-            WidgetService.updateWidget(wgid, widget)
-                .then(function () {
-                    $location.url('/user/'+model.uid+'/website/'+model.wid+'/page/'+model.pid+'/widget');
-                });
+            if(typeof widget === "undefined" || typeof widget.name === "undefined" ||
+                widget.name === null || widget.name === '') {
+                model.error = "Please enter a name for your widget";
+            }
+            else {
+                WidgetService.updateWidget(wgid, widget)
+                    .then(function () {
+                        $location.url('/website/' + model.wid + '/page/' + model.pid + '/widget');
+                    });
+            }
         }
 
     }

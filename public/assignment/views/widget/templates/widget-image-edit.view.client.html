@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a  href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
+                <a  href="#!/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
                 </a>
@@ -21,6 +21,7 @@
 </nav>
 
 <div class= "container-fluid wd-widgetlist">
+    <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
 
     <label for="name">Name</label>
     <input class="form-control"
@@ -64,7 +65,7 @@
         <input  name="widgetId"  value="{{model.wgid}}"   style="display: none"/>
         <button type="submit"    class="btn btn-block btn-primary wd-upload-btn">Upload Image</button>
     </form>
-    <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{model.wgid}}/search"
+    <a href="#!/website/{{model.wid}}/page/{{model.pid}}/widget/{{model.wgid}}/search"
        class="btn btn-block btn-info">Search Flickr</a>
     <a ng-click="model.updateWidget(model.wgid,model.widget)" class="btn btn-block btn-success">Update</a>
     <a ng-click="model.deleteWidget(model.pid,model.wgid)" class="btn btn-block btn-danger">Delete</a>
@@ -75,7 +76,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="#!/user/{{model.uid}}" class="navbar-link">
+            <a href="#!/profile" class="navbar-link">
                 <span class="glyphicon glyphicon-user ">
                 </span>
             </a>

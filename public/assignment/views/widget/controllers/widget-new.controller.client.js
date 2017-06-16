@@ -3,10 +3,10 @@
         .module('WebAppMaker')
         .controller('NewWidgetController',newWidgetController);
 
-    function newWidgetController($routeParams,$location,WidgetService) {
+    function newWidgetController($routeParams,currentUser,$location,WidgetService) {
         var model = this;
 
-        model.uid = $routeParams['uid'];
+        model.uid = currentUser._id;
         model.wid = $routeParams['wid'];
         model.pid = $routeParams['pid'];
 
@@ -19,7 +19,7 @@
                 .createWidget(pid,widget)
                 .then(function (widgetId) {
                     var wgid = widgetId;
-                    $location.url('/user/'+model.uid+'/website/'+ model.wid + '/page/'
+                    $location.url('/website/'+ model.wid + '/page/'
                         + model.pid + "/widget/"+wgid);
                 });
         }

@@ -3,10 +3,10 @@
         .module('WebAppMaker')
         .controller('WidgetListController',widgetListController);
 
-    function widgetListController($routeParams,$sce,$location,WidgetService) {
+    function widgetListController($routeParams,currentUser,$sce,$location,WidgetService) {
 
         var model = this;
-        model.uid = $routeParams['uid'];
+        model.uid = currentUser._id;
         model.wid = $routeParams['wid'];
         model.pid = $routeParams['pid'];
 
@@ -50,7 +50,7 @@
         function widgetCog(widget) {
             if (widget.widgetType === 'HEADING' ||widget.widgetType === 'IMAGE' ||widget.widgetType === 'YOUTUBE'
                 ||widget.widgetType === 'HTML' || widget.widgetType ==='TEXT' ){
-                $location.url('/user/'+model.uid+'/website/'+ model.wid + '/page/'
+                $location.url('/website/'+ model.wid + '/page/'
                     + model.pid + "/widget/"+widget._id);
             }
         }

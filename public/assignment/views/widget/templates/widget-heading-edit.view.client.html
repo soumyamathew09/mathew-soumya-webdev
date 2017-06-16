@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#!/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
+                <a href="#!/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
                 </a>
@@ -22,7 +22,7 @@
 </nav>
 
 <div class= "container-fluid">
-
+<div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
     <label for="name">Name</label>
     <input class="form-control"
            ng-model="model.widget.name"
@@ -64,7 +64,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="#!/user/{{model.uid}}" class="navbar-link">
+            <a href="#!/profile" class="navbar-link">
                 <span class="glyphicon glyphicon-user ">
                 </span>
             </a>

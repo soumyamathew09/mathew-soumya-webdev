@@ -82,7 +82,7 @@ function uploadImage(req, res) {
         var size = myFile.size;
         var mimetype = myFile.mimetype;
 
-        var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId;
+        var callbackUrl = "/assignment/#!/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId;
         var url = '/assignment/uploads/' + filename;
         return updateWidgetById(widgetId,url)
             .then(function () {
