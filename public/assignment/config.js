@@ -18,56 +18,123 @@
                 controller: 'RegisterController',
                 controllerAs: 'model'
             })
-            .when('/user/:uid',{
+            .when('/profile', {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: 'ProfileController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
-            .when('/user/:uid/website',{
+            .when('/website',{
                 templateUrl: 'views/website/templates/website-list.view.client.html',
                 controller: 'WebsiteListController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
-            .when('/user/:uid/website/new',{
+            .when('/website/new',{
                 templateUrl: 'views/website/templates/website-new.view.client.html',
                 controller: 'NewWebsiteController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
-            .when('/user/:uid/website/:wid',{
+            .when('/website/:wid',{
                 templateUrl: 'views/website/templates/website-edit.view.client.html',
                 controller: 'EditWebsiteController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
-            .when('/user/:uid/website/:wid/page',{
+            .when('/website/:wid/page',{
                 templateUrl: 'views/page/templates/page-list.view.client.html',
                 controller: 'PageListController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
-            .when('/user/:uid/website/:wid/page/new',{
+            .when('/website/:wid/page/new',{
                 templateUrl: 'views/page/templates/page-new.view.client.html',
                 controller: 'NewPageController',
-                controllerAs: 'model'
-            }).when('/user/:uid/website/:wid/page/:pid',{
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            }).when('/website/:wid/page/:pid',{
                 templateUrl: 'views/page/templates/page-edit.view.client.html',
                 controller: 'EditPageController',
-                controllerAs: 'model'
-            }).when('/user/:uid/website/:wid/page/:pid/widget',{
+                controllerAs: 'model',
+                resolve: {
+                currentUser: checkLoggedIn
+                }
+            }).when('/website/:wid/page/:pid/widget',{
                 templateUrl: 'views/widget/templates/widget-list.view.client.html',
                 controller: 'WidgetListController',
-                controllerAs: 'model'
-            }).when('/user/:uid/website/:wid/page/:pid/widget/new',{
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            }).when('/website/:wid/page/:pid/widget/new',{
                 templateUrl: 'views/widget/templates/widget-chooser.view.client.html',
                 controller: 'NewWidgetController',
-                controllerAs: 'model'
-            }).when('/user/:uid/website/:wid/page/:pid/widget/:wgid',{
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            }).when('/website/:wid/page/:pid/widget/:wgid',{
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 controller: 'EditWidgetController',
-                controllerAs: 'model'
-            }).when('/user/:uid/website/:wid/page/:pid/widget/:wgid/search',{
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+
+            }).when('/website/:wid/page/:pid/widget/:wgid/search',{
                 templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
                 controller: 'FlickrImageSearchController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
 
+    }
+
+    function checkLoggedIn(UserService, $q, $location) {
+        var deferred = $q.defer();
+
+        UserService
+            .loggedin()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.reject();
+                    $location.url('/login');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+
+        return deferred.promise;
+    }
+
+    function checkCurrentUser(userService, $q, $location) {
+        var deferred = $q.defer();
+
+        userService
+            .loggedin()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.resolve({});
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+
+        return deferred.promise;
     }
 })();
