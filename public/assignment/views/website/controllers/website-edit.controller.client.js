@@ -2,11 +2,11 @@
     angular.module('WebAppMaker')
             .controller('EditWebsiteController',editWebsiteController);
 
-    function editWebsiteController($routeParams,$location,WebsiteService) {
+    function editWebsiteController($routeParams,currentUser,$location,WebsiteService) {
 
         var model = this;
 
-        model.uid = $routeParams['uid'];
+        model.uid = currentUser._id;
         model.wid = $routeParams['wid'];
         model.deleteWebsite = deleteWebsite;
         model.updateWebsite = updateWebsite;
@@ -35,7 +35,7 @@
                 .deleteWebsite(userId,websiteId)
                 .then(
                     function () {
-                    $location.url('/user/'+model.uid+'/website');
+                    $location.url('/website');
                 },
                     function () {
                     model.error = "Unable to delete website";
@@ -44,14 +44,20 @@
         }
         
         function updateWebsite(websiteId,website) {
-            WebsiteService
-                .updateWebsite(websiteId,website)
-                .then(function () {
-                    $location.url('/user/'+model.uid+'/website');
-                },
-                function(){
-                    model.error = "Website was not updated successfully"
-                });
+            if(typeof website === "undefined" || typeof website.name === "undefined" ||
+                website.name === null || website.name === '') {
+                model.error = "Please enter a name for your new website";
+            }
+            else {
+                WebsiteService
+                    .updateWebsite(websiteId, website)
+                    .then(function () {
+                            $location.url('/website');
+                        },
+                        function () {
+                            model.error = "Website was not updated successfully"
+                        });
+            }
         }
 
     }

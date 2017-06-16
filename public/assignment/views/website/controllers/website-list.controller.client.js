@@ -2,11 +2,11 @@
     angular.module('WebAppMaker')
             .controller('WebsiteListController',websiteListController);
 
-    function websiteListController($routeParams,WebsiteService) {
+    function websiteListController(currentUser,WebsiteService) {
 
         var model = this;
 
-        model.uid = $routeParams['uid'];
+        model.uid = currentUser._id;
 
         function init(){
             WebsiteService
