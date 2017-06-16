@@ -9,26 +9,36 @@
         model.register = register;
 
         function register (username,password,password2) {
+            if (typeof username !== "undefined" && typeof password !== "undefined" && typeof password2 !== "undefined") {
+                if (password !== password2) {
+                    model.error = "Your passwords do not match";
+                }
+                else {
+                    UserService
+                        .findUserByUsername(username)
+                        .then(
+                            function (user) {
+                                if (user !== null) {
+                                    showErrorMessage();
+                                }
+                                else {
+                                    registerNewUser(username, password);
+                                }
+                            },
+                            function () {
+                                registerNewUser(username, password);
+                            }
+                        );
+                }
+            }
+            else{
+                model.error = "Please enter all required fields"
+            }
 
-            UserService
-                .findUserByUsername(username)
-                .then(
-                    function (user) {
-                     if(user !== null){
-                         showErrorMessage();
-                     }
-                     else {
-                         registerNewUser(username,password);
-                     }
-                    },
-                    function () {
-                        registerNewUser(username,password)
-                    }
-                )
-        };
+        }
 
             function showErrorMessage(){
-                model.error = 'sorry this username is taken';
+                model.error = 'Sorry this username is taken';
                 return;
             }
 
@@ -37,9 +47,9 @@
                     username: username,
                     password: password
                 };
-                UserService.createUser(newUser)
+                UserService.register(newUser)
                     .then(function (newUser) {
-                        $location.url('/user/'+ newUser._id);
+                        $location.url('/profile');
                     });
             }
     }
