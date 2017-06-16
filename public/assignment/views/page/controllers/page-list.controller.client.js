@@ -2,10 +2,10 @@
     angular.module('WebAppMaker')
             .controller('PageListController',pageListController);
 
-    function pageListController($routeParams,PageService) {
+    function pageListController($routeParams,currentUser,PageService) {
         var model = this;
 
-        model.uid = $routeParams['uid'];
+        model.uid = currentUser._id;
         model.wid = $routeParams['wid'];
 
         function init(){

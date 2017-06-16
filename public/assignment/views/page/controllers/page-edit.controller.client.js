@@ -2,11 +2,11 @@
     angular.module('WebAppMaker')
             .controller('EditPageController',editPageController);
 
-    function editPageController($routeParams,$location,PageService) {
+    function editPageController($routeParams,currentUser,$location,PageService) {
 
         var model = this;
 
-        model.uid = $routeParams['uid'];
+        model.uid = currentUser._id;
         model.wid = $routeParams['wid'];
         model.pid = $routeParams['pid'];
         model.deletePage = deletePage;
@@ -27,17 +27,23 @@
             PageService
                 .deletePage(websiteId,pageId)
                 .then(function () {
-                    $location.url('/user/'+model.uid+'/website/'+model.wid+'/page');
+                    $location.url('/website/'+model.wid+'/page');
                 });
 
         }
         
         function updatePage(pageId,page) {
-            PageService
-                .updatePage(pageId,page)
-                .then(function () {
-                    $location.url('/user/'+model.uid+'/website/'+model.wid+'/page');
-                });
+            if(typeof page === "undefined" || typeof page.name === "undefined" ||
+                page.name === null || page.name === '') {
+                model.error = "Please enter a name for your page";
+            }
+            else {
+                PageService
+                    .updatePage(pageId, page)
+                    .then(function () {
+                        $location.url('/website/' + model.wid + '/page');
+                    });
+            }
         }
 
         function renderPage(page) {
