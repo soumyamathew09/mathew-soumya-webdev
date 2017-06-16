@@ -12,6 +12,10 @@
         this.findUserByUsername = findUserByUsername;
         this.updateUser = updateUser;
         this.deleteUser = deleteUser;
+        this.login = login;
+        this.logout = logout;
+        this.register = register;
+        this.loggedin = loggedin;
 
 
         function findUserByCredentials(username, password) {
@@ -62,6 +66,39 @@
                         return response.data;
                     }
                 );
+        }
+
+        function login(user) {
+            var url = "/api/assignment/login";
+
+            return $http.post(url, user)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function logout(user) {
+            var url = "/api/assignment/logout";
+            return $http.post(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+        
+        function register(user) {
+            var url = "/api/assignment/register";
+            return $http.post(url,user)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+        
+        function loggedin() {
+            var url = "/api/assignment/loggedin";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
     }

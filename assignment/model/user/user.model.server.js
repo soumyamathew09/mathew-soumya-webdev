@@ -12,11 +12,13 @@ userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.addWebsite = addWebsite;
 userModel.deleteWebsite = deleteWebsite;
+userModel.findUserByGoogleId = findUserByGoogleId;
 
 
 module.exports = userModel;
 
 function createUser(user) {
+    user.roles = ['USER'];
     return userModel.create(user);
 }
 
@@ -33,7 +35,7 @@ function findUserByUsername(username) {
 }
 
 function findUserByCredentials(username, password) {
-    return userModel.findOne({username:username,password:password})
+    return userModel.findOne({username:username,password:password});
 }
 
 function updateUser(userId, user) {
@@ -61,4 +63,8 @@ function deleteWebsite(userId,websiteId) {
             user.websites.splice(index,1);
             return user.save();
         });
+}
+
+function findUserByGoogleId(googleId) {
+    return userModel.findOne({'google.id' : googleId});
 }
