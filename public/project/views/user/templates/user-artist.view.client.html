@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-xs-10">
+    <a href="#!/artist/{{user.artistName}}/event" >{{user.username}}</a> posted
+    <strong>"{{user.post.description}}"</strong> for the upcoming event at
+    <a href="#!/artist/{{user.artistName}}/event/{{user.event._id}}">{{user.event.venue.name}}</a>
+    </div>
+    <div class="col-xs-2">
+        <a ng-show=!user.liked ng-click="model.likePost(user.post._id)">
+            <span class="glyphicon glyphicon-heart-empty pull-right">
+            </span>
+        </a>
+        <a ng-show=user.liked ng-click="model.unlikePost(user.post._id)">
+            <span class="glyphicon glyphicon-heart pull-right">
+            </span>
+        </a>
+    </div>
+</div>

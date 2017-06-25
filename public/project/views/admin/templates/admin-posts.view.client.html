@@ -1,0 +1,37 @@
+<div class=" container-fluid">
+    <h1>List Of Posts</h1>
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-3">
+                    Posted By
+                </div>
+                <div class="col-xs-3">
+                    On
+                </div>
+                <div class="col-xs-3">
+                    Content
+                </div>
+                <div class="col-xs-3">
+                </div>
+            </div>
+        </li>
+        <li ng-repeat="post in model.posts" class="list-group-item">
+            <div class="row">
+                <div class="col-xs-3">
+                    {{post.username}}
+                </div>
+                <div class="col-xs-3">
+                    {{post.dateCreated | date}}
+                </div>
+                <div class="col-xs-3">
+                    {{post.description}}
+                </div>
+                <div class="col-xs-3">
+                    <span ng-click="model.deletePost(post._id)"
+                          class="glyphicon glyphicon-remove pull-right"></span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

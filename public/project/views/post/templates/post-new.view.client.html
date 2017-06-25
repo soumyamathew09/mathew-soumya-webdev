@@ -1,0 +1,53 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#!/artist/{{model.artistName}}/event/{{model.eventId}}"
+                   class="navbar-link">
+            <span class="glyphicon glyphicon-chevron-left">
+            </span>
+                </a>
+            </p>
+            <a class="navbar-brand" >
+                New Post
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.createPage(model.wid,page)"
+                   class="navbar-link">
+          <span class="glyphicon glyphicon-ok ">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class= "container-fluid">
+    <div ng-show="model.error"
+         class="alert-info alert">{{model.error}}</div>
+
+
+    <label for="new-post">New Post</label>
+    <textarea class="form-control"
+              ng-model ="model.newPost.description"
+              rows="5"
+              placeholder="Share a new post for your fans"
+              id="new-post">
+    </textarea>
+    <a ng-click="model.createPost(model.eventId,model.newPost)"
+       class="btn btn-block btn-success">Share Post</a>
+
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a href="#!/profile" class="navbar-link">
+                <span class="glyphicon glyphicon-user ">
+                </span>
+            </a>
+        </p>
+    </div>
+</nav>

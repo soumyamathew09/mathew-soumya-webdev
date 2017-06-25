@@ -1,0 +1,121 @@
+input.form-control,
+textarea.form-control,
+select.form-control,
+button.btn.btn-block.btn-primary.wd-upload-btn {
+    margin-bottom: 5px;
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-bottom: 10px;
+}
+
+
+.wd-body-container{
+    margin-top: 10px;
+    background: white;
+    opacity: 0.92;
+    padding-bottom: 40px;
+}
+
+.navbar-default > div {
+    background-color: #6c6f73;
+    border-color: #6c6f73;
+}
+
+nav.navbar.navbar-default.navbar-fixed-top
+{
+    padding-right: 15px;
+}
+
+nav.navbar.navbar-default.navbar-fixed-bottom{
+    padding-right: 15px;
+}
+.navbar-default .navbar-brand ,
+.navbar-default .navbar-link {
+    color: #fff;
+}
+
+.navbar-header,
+.navbar-fixed-bottom{
+    width: 100%;
+}
+
+.navbar-header.home-header{
+    width: auto;
+}
+
+
+
+.navbar.navbar-default a{
+    color: white;
+}
+
+.wd-widget{
+    margin-bottom: 10px;
+}
+
+.wd-widget > img {
+    width: 100%;
+}
+
+.wd-widget-flikr{
+    display:block;
+    max-width: 100%;
+    max-height:100%;
+    width: 100%;
+    height: 100%;
+}
+
+.wd-widget > .wd-widget-toolbar {
+    position: absolute;
+    right: 15px;
+    background: white;
+    opacity: 0.8;
+    padding: 5px;
+    border-bottom-left-radius: 8px;
+    z-index: 99;
+}
+
+.wd-colour-scheme {
+    color: #6c6f73;
+}
+
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+    background-color: #565054;
+    border-color: #565054;
+}
+
+span.glyphicon.glyphicon-cog.pull-right,
+.wd-glyph-displacement {
+    padding-right: 14px;
+}
+
+.wd-youtube-video{
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 60px; overflow: hidden;
+}
+
+.wd-youtube-video iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+span.glyphicon.glyphicon-user {
+    padding-right: 15px;
+}
+
+span.glyphicon.glyphicon-play{
+    padding-right: 10px;
+}
+
+.list-group{
+    opacity: 0.92;
+}

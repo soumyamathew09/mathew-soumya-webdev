@@ -1,0 +1,91 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                Activity
+            </a>
+
+        </div>
+    </div>
+</nav>
+<div class="input-group container wd-body-container">
+    <input ng-model="searchUser"
+           type="text"
+           class="form-control"
+           placeholder="Who would you like to follow?">
+    <span class="input-group-btn">
+            <a ng-click="model.searchUser(searchUser)" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+</div>
+<div ng-show="model.allUsers"  class="container  wd-body-container">
+    <div class="row">
+
+        {{model.allUsers.username}}
+
+    <a ng-click="model.addFollower(model.allUsers._id)"
+       class="btn btn-success btn-block">Follow</a>
+    </div>
+</div>
+</div>
+<div class="container wd-body-container">
+        <div class="row">
+        <div class="col-xs-4">
+            <button type="button" ng-click="model.renderFollowers(model.userId)"
+                    class="btn btn-primary">View Followers</button>
+        </div>
+            <div class="col-xs-4">
+            <button type="button" ng-click="model.renderFollowing(model.userId)"
+                    class="btn btn-primary">View Following</button>
+            </div>
+            <div class="col-xs-4">
+                <button type="button" ng-click="model.renderAttending(model.userId)"
+                        class="btn btn-primary">View Attending</button>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div ng-show="model.followers">
+
+             <h3>Followers</h3>
+            <li ng-repeat="follower in model.followers" class="list-group-item">
+                {{follower.username}} has started following you
+            </li>
+            </div>
+        </div>
+            <div class="col-xs-4">
+                <div ng-show="model.following">
+                <h3>Following</h3>
+                <li ng-repeat="follow in model.following" class="list-group-item">
+                    You are now following {{follow.username}}
+                </li>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div ng-show="model.events">
+                <h3>Your upcoming concerts</h3>
+                <li ng-repeat="event in model.events" class="list-group-item">
+                    You will be attending the concert at {{event.venue.name}} on {{event.datetime|date}}
+                </li>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a href="#!/profile" class="navbar-link">
+                <span class="glyphicon glyphicon-user ">
+                </span>
+            </a>
+        </p>
+    </div>
+</nav>
