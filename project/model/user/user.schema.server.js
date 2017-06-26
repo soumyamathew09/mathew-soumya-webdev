@@ -6,8 +6,8 @@ var userSchema = mongoose.Schema({
         firstName: String,
         lastName: String,
         roles: [{type: String,
-        default:'USER',
-        enum:['USER','FAN','ARTIST','ADMIN']}],
+        default:'FAN',
+        enum:['FAN','ARTIST','ADMIN']}],
 
         facebook: {
             id:  String,

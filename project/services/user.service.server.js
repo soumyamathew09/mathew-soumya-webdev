@@ -236,7 +236,8 @@
                             facebook: {
                                 id:    profile.id,
                                 token: token
-                            }
+                            },
+                            roles: ['FAN']
                         };
                         return userModel.createUser(newFacebookUser);
                     }
