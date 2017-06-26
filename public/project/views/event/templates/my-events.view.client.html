@@ -36,7 +36,8 @@
         <li ng-show="model.message" class="list-group-item text-center">
             {{model.message}}
         </li>
-        <li ng-repeat="event in model.events" class="list-group-item">
+        <li ng-repeat="event in model.events" class="list-group-item events-list"
+            ng-click=model.fetchEvent(event)>
             <div class="row">
                 <div class="col-sm-4 col-xs-9">
                     <a ng-click=model.fetchEvent(event)

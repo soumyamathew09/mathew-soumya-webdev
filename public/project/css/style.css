@@ -132,3 +132,7 @@ span.glyphicon.glyphicon-play{
 .list-group{
     opacity: 0.92;
 }
+
+li.events-list:hover{
+    background-color: #d5dce2;
+}
