@@ -81,6 +81,7 @@
                 PostService.findAllPostByArtistForEvent(userId, eventId)
                     .then(function (posts) {
                         if(posts.length ===0){
+                            model.posts = posts;
                             model.noPosts = "You have not posted for this event before.Click below to " +
                                 "post something new";
                         }

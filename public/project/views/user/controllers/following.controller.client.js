@@ -37,18 +37,23 @@
         }
 
         function searchUser(searchName) {
-            UserService.findUserByUsername(searchName)
-                .then(function (user) {
-                    if(user !== null){
-                        model.searchedUser = user;
-                        renderFollowButton(user);
-                        model.searchResult='';
-                    }
-                    else{
-                        model.searchResult = "There is no user with the username " + searchName +
-                            ". Please check the the name and try again."
-                    }
-                });
+            if(searchName === currentUser.username){
+                model.searchResult = " Do you really want to follow yourself?"
+            }
+            else {
+                UserService.findUserByUsername(searchName)
+                    .then(function (user) {
+                        if (user !== null) {
+                            model.searchedUser = user;
+                            renderFollowButton(user);
+                            model.searchResult = '';
+                        }
+                        else {
+                            model.searchResult = "There is no user with the username " + searchName +
+                                ". Please check the the name and try again."
+                        }
+                    });
+            }
         }
 
         function renderFollowingUsersInformation(index,users) {
