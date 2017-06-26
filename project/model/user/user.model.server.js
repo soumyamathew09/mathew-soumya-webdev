@@ -18,8 +18,10 @@ userModel.deleteUser = deleteUser;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.findAllFollowers = findAllFollowers;
 userModel.findAllFollowing = findAllFollowing;
-userModel.updateFollowers = updateFollowers;
-userModel.updateFollowing = updateFollowing;
+userModel.addFollower = addFollower;
+userModel.removeFollower = removeFollower;
+userModel.addFollowing = addFollowing;
+userModel.removeFollowing = removeFollowing;
 userModel.addEvent = addEvent;
 userModel.findAllEventsAttending = findAllEventsAttending;
 userModel.findUserByBitId = findUserByBitId;
@@ -62,22 +64,43 @@ function deleteUser(userId) {
     return userModel.remove({_id: userId});
     }
 
-function updateFollowing(userId,followerId) {
+function addFollowing(userId,followingId) {
     return userModel.findById(userId)
         .then(function (user) {
-            user.following.push(followerId);
+            user.following.push(followingId);
             user.save();
             return user;
         })
 }
 
-function updateFollowers(userId,followerId) {
-    return userModel.findById(followerId)
-        .then(function (userF) {
-            userF.followers.push(userId);
-            return userF.save();
+function removeFollowing(userId,followingId) {
+    return userModel.findById(userId)
+        .then(function (user) {
+            var index = user.following.indexOf(followingId);
+            user.following.splice(index,1);
+            user.save();
+            return user;
         })
 }
+
+function addFollower(userId,followerId) {
+    return userModel.findById(userId)
+        .then(function (user) {
+            user.followers.push(followerId);
+            return user.save();
+        });
+}
+
+function removeFollower(userId,followerId) {
+    return userModel.findById(userId)
+        .then(function (user) {
+            var index = user.followers.indexOf(followerId);
+            user.followers.splice(index,1);
+            user.save();
+            return user;
+        });
+}
+
 
 function removeEvent(userId,eventId) {
     return userModel.findById(userId)

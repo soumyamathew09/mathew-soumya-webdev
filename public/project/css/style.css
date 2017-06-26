@@ -11,13 +11,26 @@ body {
     margin-bottom: 10px;
 }
 
+.row{
+    margin-top: 10px;
+}
 
 .wd-body-container{
     margin-top: 10px;
     background: white;
     opacity: 0.92;
+    padding-top: 10px;
     padding-bottom: 40px;
+    margin-bottom: 40px;
 }
+
+.wd-botton-most-element{
+    margin-bottom: 80px;
+}
+.wd-top-most-element{
+    margin-top: 20px;
+}
+
 
 .navbar-default > div {
     background-color: #6c6f73;

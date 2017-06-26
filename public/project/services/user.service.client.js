@@ -21,7 +21,8 @@
         this.checkAdmin = checkAdmin;
         this.findAllFollowers = findAllFollowers;
         this.findAllFollowing = findAllFollowing;
-        this.updateFollowers = updateFollowers;
+        this.follow = follow;
+        this.unfollow = unfollow;
         this.findAllEventsAttending = findAllEventsAttending;
         this.findUserByBitId = findUserByBitId;
         this.findFollowingUsersInformation = findFollowingUsersInformation;
@@ -149,8 +150,15 @@
                 });
         }
 
-        function updateFollowers(user,followerId) {
+        function follow(user,followerId) {
             var url = '/api/project/follow/'+followerId;
+            return $http.put(url,user)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+        function unfollow(user,followerId) {
+            var url = '/api/project/unfollow/'+followerId;
             return $http.put(url,user)
                 .then(function (response) {
                     return response.data;

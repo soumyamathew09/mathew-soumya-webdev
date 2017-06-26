@@ -14,15 +14,14 @@
         model.deletePost = deletePost;
         model.notAttendingEvent=notAttendingEvent;
         model.likePost = likePost;
+        model.unlikePost = unlikePost;
 
         function init(){
 
             EventService
                 .findEventInfo(model.artistName,model.eventId)
                 .then(renderEvent);
-            isFan(currentUser);
-            isArtist(currentUser);
-            renderPosts(model.userId,model.eventId);
+
 
         }
 
@@ -30,13 +29,18 @@
 
         function renderEvent(event) {
             model.event = event;
+            isFan(currentUser);
+            isArtist(currentUser);
             isAttending();
+            renderAttendeeCount();
+            renderPosts(model.userId,model.eventId);
         }
 
         function attendingEvent() {
             EventService.addAttendee(model.userId,model.eventId)
                 .then(function () {
                     renderAttendingStatus();
+                    renderAttendeeCount();
                 });
         }
 
@@ -44,6 +48,7 @@
             EventService.removeAttendee(model.userId,model.eventId)
                 .then(function () {
                     renderAttendingStatus();
+                    renderAttendeeCount();
                 })
         }
 
@@ -53,7 +58,14 @@
         }
 
         function isArtist(user) {
-            model.isArtist= user.roles.includes("ARTIST");
+            if(user.roles.includes("ARTIST")){
+                if (currentUser.bitId == model.event.artist_id){
+                            model.isArtist = true;
+                        }
+                        else{
+                            model.isFan = true;
+                        }
+            }
         }
 
         function createPost(post) {
@@ -68,14 +80,26 @@
             if(model.isArtist) {
                 PostService.findAllPostByArtistForEvent(userId, eventId)
                     .then(function (posts) {
-                        model.posts = posts;
+                        if(posts.length ===0){
+                            model.noPosts = "You have not posted for this event before.Click below to " +
+                                "post something new";
+                        }
+                        else {
+                            setLikedStatus(posts);
+                        }
                     });
             }
             else
                 if(model.isFan){
                 PostService.findAllPostForEvent(eventId)
                     .then(function (posts) {
-                        setUsernameForPosts(0,posts);
+                        if(posts.length ===0){
+                            model.noPosts = "The artists are too busy touring and haven't had any time " +
+                                "to post yet."
+                        }
+                        else{
+                            setUsernameForPosts(0,posts);
+                        }
                     });
                 }
         }
@@ -89,6 +113,13 @@
                 .then(function (event) {
                    model.isAttending = event.attendees.includes(model.userId);
                 });
+        }
+
+        function renderAttendeeCount() {
+            EventService.findEventById(model.eventId)
+                .then(function (event) {
+                    model.event.attendeeCount = event.attendees.length;
+                })
         }
 
         function deletePost(postId) {
@@ -109,6 +140,21 @@
 
         }
 
+        function unlikePost(postId) {
+            PostService
+                .unlikePost(postId,model.userId)
+                .then(function () {
+                    renderPosts(model.userId,model.eventId);
+                });
+
+        }
+
+        function setLikedStatus(posts) {
+            for(var p=0;p<posts.length;p++){
+                posts[p].isLiked = posts[p].likes.includes(model.userId);
+            }
+            model.posts = posts;
+        }
 
         function setUsernameForPosts(index,posts) {
             if(index<posts.length){
@@ -121,7 +167,7 @@
             }
             else
             {
-                model.posts = posts;
+                setLikedStatus(posts);
             }
 
         }

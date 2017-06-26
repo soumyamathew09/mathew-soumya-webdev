@@ -20,7 +20,12 @@
         init();
 
         function renderEvents(events) {
-            model.events = events;
+            if(events.length > 0){
+                model.events = events;
+            }
+            else{
+                model.message = "You have no concerts in the near future. Enjoy your break!!";
+            }
         }
 
         function fetchEvent(event) {

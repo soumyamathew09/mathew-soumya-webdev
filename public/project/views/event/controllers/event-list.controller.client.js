@@ -2,16 +2,23 @@
     angular.module('ConcertFever')
         .controller('EventListController',eventListController);
 
-    function eventListController($routeParams,currentUser,$location,EventService) {
+    function eventListController($routeParams,$location,UserService,EventService) {
 
         var model = this;
 
-        model.uid = currentUser._id;
         model.artistName = $routeParams['artistId'];
-        model.attendingEvent = attendingEvent;
         model.fetchEvent = fetchEvent;
 
         function init(){
+            UserService.loggedin()
+                .then(function (user) {
+                    if(user==='0'){
+                        model.info = "Sign up with ConcertFever to  have access to all event information"
+                    }
+                    else {
+                        model.currentUser = user;
+                    }
+                });
             EventService
                 .findEventsByArtist(model.artistName)
                 .then(renderEvents);
@@ -22,11 +29,7 @@
         function renderEvents(events) {
             model.events = events;
         }
-        
-        function attendingEvent(event) {
-            EventService.addAttendee(model.uid,event)
 
-        }
 
         function fetchEvent(event) {
             return EventService.findEventByBITId(event.id)

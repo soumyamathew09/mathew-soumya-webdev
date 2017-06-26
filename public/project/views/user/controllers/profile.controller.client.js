@@ -36,6 +36,7 @@
                         model.error = '';
                         model.artistImportMessage = '';
                         model.message = "User update was successful";
+                        isUnlinkedUser(user);
                 });
         }
         

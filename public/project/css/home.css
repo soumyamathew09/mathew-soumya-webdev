@@ -7,7 +7,7 @@ body{
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizelegibility;
     color: #6c6f73;
-    background: url('https://images.alphacoders.com/630/630733.jpg') center center no-repeat;
+    background: url('https://images.alphacoders.com/630/630733.jpg') center center;
     background-size: cover;
 }
 
@@ -49,6 +49,6 @@ img{
 }
 
 h1{
-    color: white;
+    color: #6c6f73;
     text-transform: uppercase;
 }

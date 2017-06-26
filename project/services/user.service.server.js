@@ -28,7 +28,8 @@
     app.get ('/api/project/admin/user',isAdmin, findAllUsers);
     app.get ('/api/project/user', findUser);
     app.post('/api/project/user',isAdmin, createUser);
-    app.put('/api/project/follow/:followerId', updateFollowers);
+    app.put('/api/project/follow/:followingId', addFollowing);
+    app.put('/api/project/unfollow/:followingId', removeFollowing);
     app.put ('/api/project/user/:userId', updateUser);
     app.delete ('/api/project/user/:userId',isAdmin, deleteUser);
     app.post  ('/api/project/login', passport.authenticate('local'), login);
@@ -313,16 +314,28 @@
             });
     }
 
-    function updateFollowers(req,res) {
-        var followerId = req.params['followerId'];
+    function addFollowing(req,res) {
+        var followingId = req.params['followingId'];
         var user = req.body;
-        userModel.updateFollowers(user._id,followerId);
-        return userModel.updateFollowing(user._id,followerId)
+        userModel.addFollowing(user._id,followingId);
+        return userModel.addFollower(followingId,user._id)
             .then(function (u) {
                 res.send(u);
                 return;
             });
     }
+
+    function removeFollowing(req,res) {
+        var followingId = req.params['followingId'];
+        var user = req.body;
+        userModel.removeFollowing(user._id,followingId);
+        return userModel.removeFollower(followingId,user._id)
+            .then(function (u) {
+                res.send(u);
+                return;
+            });
+    }
+
 
     function findAllEventsAttending(req,res) {
         var userId = req.params['userId'];

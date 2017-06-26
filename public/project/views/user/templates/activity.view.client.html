@@ -19,33 +19,52 @@
             </a>
         </span>
 </div>
-<div ng-show="model.allUsers"  class="container  wd-body-container">
+<div ng-show="model.searchResult" class="container wd-body-container">{{model.searchResult}}</div>
+<div ng-show="model.searchedUser"  class="container  wd-body-container">
     <div class="row">
-
-        {{model.allUsers.username}}
-
-    <a ng-click="model.addFollower(model.allUsers._id)"
-       class="btn btn-success btn-block">Follow</a>
+    <div class="col-xs-4">
+        {{model.searchedUser.username}} ( {{model.searchedUser.firstName}} )
+    </div>
+        <div class="col-xs-4">
+            Joined ConcertFever on {{model.searchedUser.dateCreated |date}}
+        </div>
+        <div class="col-xs-4">
+            <div ng-show="!model.searchedUser.alreadyFollowing">
+            <a ng-click="model.follow(model.searchedUser._id)"
+                    class="btn btn-success btn-block">Follow</a>
+            </div>
+            <div ng-show="model.searchedUser.alreadyFollowing">
+                <a ng-click="model.unfollow(model.searchedUser._id)"
+                   class="btn btn-danger btn-block">UnFollow</a>
+            </div>
+            </div>
     </div>
 </div>
 </div>
-<div class="container wd-body-container">
+<div class="container container-fluid wd-body-container">
         <div class="row">
-        <div class="col-xs-4">
+        <div class="col-sm-4">
             <button type="button" ng-click="model.renderFollowers(model.userId)"
-                    class="btn btn-primary">View Followers</button>
+                    class="form-control btn btn-primary">View Followers</button>
         </div>
-            <div class="col-xs-4">
+            <div class="col-sm-4">
             <button type="button" ng-click="model.renderFollowing(model.userId)"
-                    class="btn btn-primary">View Following</button>
+                    class=" form-control btn btn-primary">View Following</button>
+                <button type="button" ng-click="model.showFollowingUsersActivity()"
+                    class=" form-control btn btn-info">Friends News Feed</button>
             </div>
-            <div class="col-xs-4">
+            <div class="col-sm-4">
                 <button type="button" ng-click="model.renderAttending(model.userId)"
-                        class="btn btn-primary">View Attending</button>
+                        class=" form-control btn btn-primary">View Attending</button>
+                <a class="btn btn-info btn-block"
+                   href="#!/search">Search for Concerts</a>
             </div>
         </div>
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-sm-4">
+            <div ng-show="model.nofollowersMsg">
+                {{model.nofollowersMsg}}
+            </div>
             <div ng-show="model.followers">
 
              <h3>Followers</h3>
@@ -54,7 +73,10 @@
             </li>
             </div>
         </div>
-            <div class="col-xs-4">
+            <div class="col-sm-4">
+                <div ng-show="model.nofollowingMsg">
+                    {{model.nofollowingMsg}}
+                </div>
                 <div ng-show="model.following">
                 <h3>Following</h3>
                 <li ng-repeat="follow in model.following" class="list-group-item">
@@ -62,7 +84,10 @@
                 </li>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-sm-4">
+                <div ng-show="model.noEventsMessage">
+                    {{model.noEventsMessage}}
+                </div>
                 <div ng-show="model.events">
                 <h3>Your upcoming concerts</h3>
                 <li ng-repeat="event in model.events" class="list-group-item">

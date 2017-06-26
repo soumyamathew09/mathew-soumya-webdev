@@ -57,10 +57,7 @@
             .when('/search',{
                 templateUrl: 'views/search/templates/search.view.client.html',
                 controller: 'SearchController',
-                controllerAs: 'model',
-                resolve: {
-                    currentUser: checkLoggedIn
-                }
+                controllerAs: 'model'
             }).when('/following',{
                 templateUrl: 'views/user/templates/following.view.client.html',
                 controller: 'FollowingController',
@@ -72,9 +69,6 @@
             templateUrl: 'views/event/templates/event-list.view.client.html',
             controller: 'EventListController',
             controllerAs: 'model',
-            resolve: {
-                currentUser: checkLoggedIn
-            }
             }).when('/artist/:artistId/event/:eventId',{
             templateUrl: 'views/event/templates/event-info.view.client.html',
             controller: 'EventInfoController',

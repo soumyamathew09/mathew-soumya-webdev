@@ -8,7 +8,8 @@
         var model = this;
 
         model.userId = currentUser._id;
-        model.addFollower = addFollower;
+        model.follow = follow;
+        model.unfollow = unfollow;
         model.userInfoUrl=userInfoUrl;
         model.searchUser = searchUser;
         model.likePost = likePost;
@@ -38,7 +39,15 @@
         function searchUser(searchName) {
             UserService.findUserByUsername(searchName)
                 .then(function (user) {
-                    model.allUsers = user;
+                    if(user !== null){
+                        model.searchedUser = user;
+                        renderFollowButton(user);
+                        model.searchResult='';
+                    }
+                    else{
+                        model.searchResult = "There is no user with the username " + searchName +
+                            ". Please check the the name and try again."
+                    }
                 });
         }
 
@@ -73,7 +82,7 @@
                                             role: "ARTIST",
                                             event: event,
                                             post: p,
-                                            liked: p.likes.includes(user._id)
+                                            liked: p.likes.includes(model.userId)
                                         }
                                         model.usersInfo.push(activity);
                                         index= index+1;
@@ -92,18 +101,33 @@
            }
         }
 
-        function addFollower(followingId) {
-            return UserService.updateFollowers(model.user,followingId)
-                .then(function () {
-                    renderFollowing();
+        function follow(followingId) {
+            return UserService.follow(model.user,followingId)
+                .then(function (user) {
+                    renderFollowing(model.userId);
+                    renderFollowButton(followingId);
                 });
         }
 
+        function unfollow(followingId) {
+            return UserService.unfollow(model.user,followingId)
+                .then(function (user) {
+                    renderFollowing(model.userId);
+                    renderFollowButton(followingId);
+                });
+        }
         function userInfoUrl(user) {
             if (user.role ==='FAN' || user.role==='ARTIST') {
                 var url = 'views/user/templates/user-'+ user.role.toLowerCase()+'.view.client.html';
             }
             return url;
+        }
+
+        function renderFollowButton(followId) {
+            UserService.findUserById(model.userId)
+                .then(function (user) {
+                    model.searchedUser.alreadyFollowing = user.following.includes(followId);
+                });
         }
 
         function likePost(postId) {

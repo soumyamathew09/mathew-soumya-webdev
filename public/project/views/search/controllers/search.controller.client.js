@@ -3,7 +3,7 @@
         .module('ConcertFever')
         .controller('SearchController',searchController);
 
-        function searchController($location,currentUser,MusicService) {
+        function searchController($location,MusicService) {
             var model = this;
 
             model.searchArtistsByName = searchArtistsByName;

@@ -39,6 +39,7 @@ function removeAttendee(userId) {
 
 function createEvent(event) {
     event.bitId = event.id;
+    event.artistBitId = event.artist_id;
     return eventModel.create(event)
         .then(function (event) {
             return event;

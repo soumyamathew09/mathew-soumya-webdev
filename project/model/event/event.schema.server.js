@@ -4,6 +4,7 @@ var eventSchema = mongoose.Schema({
     attendees : [{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}],
     name: String,
     bitId:Number,
+    artistBitId:Number,
     description: String,
     datetime: Date,
     venue:{
