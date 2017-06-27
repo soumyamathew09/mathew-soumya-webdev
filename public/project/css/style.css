@@ -24,6 +24,15 @@ body {
     margin-bottom: 40px;
 }
 
+.wd-body-container-dark{
+    margin-top: 10px;
+    background: #222020;
+    opacity: 0.92;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}
+
 .wd-botton-most-element{
     margin-bottom: 80px;
 }
