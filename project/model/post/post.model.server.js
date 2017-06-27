@@ -30,7 +30,7 @@ function createPost(artistId,eventId, post) {
 }
 
 function findAllPost() {
-    return postModel.find();
+    return postModel.find().sort({dateCreated: -1});
 }
 
 function removeLike(userId) {

@@ -3,13 +3,24 @@
         .module('ConcertFever')
         .controller('SearchController',searchController);
 
-        function searchController($location,MusicService) {
+        function searchController($location,currentUser,UserService,MusicService) {
             var model = this;
 
             model.searchArtistsByName = searchArtistsByName;
             model.searchBandsInTown = searchBandsInTown;
             model.searchArtist = searchArtist;
             model.eventsPresent = eventsPresent;
+            model.logout = logout;
+
+            function init() {
+                setUser(currentUser);
+            }
+
+            init();
+
+            function setUser(user) {
+                model.user = user;
+            }
 
             function searchArtistsByName(searchText) {
                 MusicService.searchArtistsByName(searchText)
@@ -48,6 +59,13 @@
                     model.events = "See upcoming concerts";
                     return true;
                 }
+            }
+            function logout() {
+                UserService
+                    .logout()
+                    .then(function () {
+                        $location.url('/login');
+                    });
             }
         }
     })

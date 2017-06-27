@@ -40,7 +40,7 @@ function createUser(user) {
 }
 
 function findAllUsers() {
-    return userModel.find();
+    return userModel.find().sort({dateCreated: -1});
 }
 
 function findNewArtists() {

@@ -1,17 +1,26 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand">
-                Profile
-            </a>
-            <p class="navbar-text pull-right">
-                <a ng-show="model.isArtist" href="#!/myevents"
-                   class="navbar-link">
-                <span class="glyphicon glyphicon-list">
-                </span>
-                </a>
-            </p>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header home-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">ConcertFever</div>
         </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-sm-right">
+                <li class="nav-item"><a href="#!/home">Home</a></li>
+                <li class="nav-item"><a href="#!/search">Search</a></li>
+                <li ng-if="model.user.anonymous" class="nav-item"><a href="#!/contact">Register</a></li>
+                <li ng-if="model.user.anonymous" class="nav-item"><a href="#!/login">Log In</a></li>
+                <li ng-if="!model.user.anonymous" class="nav-item"><a href="#!/activity">Activity</a></li>
+                <li ng-if="!model.user.anonymous" class="nav-item active"><a href="#!/profile">Profile</a></li>
+                <li ng-if="!model.user.anonymous" class="nav-item"><a ng-click="model.logout()">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
     </div>
 </nav>
 
@@ -95,23 +104,6 @@
            class="btn btn-success btn-block">Update</a>
         <a ng-click="model.unregister()"
            class="btn btn-danger btn-block">Delete Account</a>
-        <a class="btn btn-primary btn-block"
-           href="#!/activity">Activity</a>
     </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <p class="navbar-text pull-right">
-            <a ng-click="model.logout()"class="navbar-link">
-                <span class="glyphicon glyphicon-log-out ">
-                </span>
-            </a>
-        </p>
-        <p class="navbar-text pull-right">
-            <a href="#!/profile" class="navbar-link">
-                <span class="glyphicon glyphicon-user ">
-                </span>
-            </a>
-        </p>
-    </div>
-</nav>
+

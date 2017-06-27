@@ -79,13 +79,12 @@
     function createUser(req, res) {
 
         var user = req.body;
-        user.password = bcrypt.hashSync(user.password);
+        user.password = bcrypt.hashSync(user.username);
         return userModel.createUser(user)
             .then(function (doc) {
                 res.json(doc);
                 return;
             });
-
     }
 
     function findUserById(req, res) {

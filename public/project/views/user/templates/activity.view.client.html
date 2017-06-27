@@ -1,11 +1,25 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand">
-                Activity
-            </a>
-
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header home-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Concert Fever</a>
         </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-sm-right">
+                <li class="nav-item "><a href="#!/home">Home</a></li>
+                <li class="nav-item "><a href="#!/search">Search</a></li>
+                <li ng-if="model.user.anonymous" class="nav-item "><a href="#!/register">Register</a></li>
+                <li ng-if="model.user.anonymous" class="nav-item"><a href="#!/login">Log In</a></li>
+                <li ng-if="!model.user.anonymous" class="nav-item active"><a href="#!/activity">Activity</a></li>
+                <li ng-if="!model.user.anonymous" class="nav-item"><a href="#!/profile">Profile</a></li>
+                <li ng-if="!model.user.anonymous" class="nav-item "><a ng-click="model.logout()">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
     </div>
 </nav>
 <div class="input-group container wd-body-container">
@@ -24,7 +38,8 @@
     {{model.searchResult}}
 </div>
 <div ng-show="model.searchedUser"  class="container  wd-body-container">
-    <div class="row">
+
+    <div class="row list-group-item">
     <div class="col-xs-4">
         {{model.searchedUser.username}} ( {{model.searchedUser.firstName}} )
     </div>
@@ -43,9 +58,63 @@
             </div>
     </div>
 </div>
+
+
 </div>
 <div class="container container-fluid wd-body-container">
-        <div class="row">
+    <div class="row">
+        <div class="btn-group-vertical col-xs-3" role="group">
+            <button type="button" class="btn btn-default"
+                    ng-click="model.renderFollowers(model.userId)">Followers</button>
+            <button type="button" class="btn btn-default"
+                    ng-click="model.renderFollowing(model.userId)">Following</button>
+            <button type="button" class="btn btn-default"
+                    ng-click="model.renderAttending(model.userId)">Attending</button>
+            <a class="btn btn-primary"
+               href="#!/following">News Feed</a>
+            <a class="btn btn-success"
+               href="#!/search">Search </a>
+            <a class="btn btn-info"
+               ng-show="model.isArtist"
+               href="#!/myevents">My Concerts</a>
+        </div>
+        <div class="col-xs-9">
+
+            <div ng-show="model.nofollowingMsg">
+                {{model.nofollowingMsg}}
+            </div>
+            <div ng-show="model.following">
+                <h3>Following</h3>
+                <li ng-repeat="follow in model.following" class="list-group-item">
+                    You are now following {{follow.username}}
+                </li>
+            </div>
+
+            <div ng-show="model.nofollowersMsg">
+                {{model.nofollowersMsg}}
+            </div>
+            <div ng-show="model.followers">
+
+                <h3>Followers</h3>
+                <li ng-repeat="follower in model.followers" class="list-group-item">
+                    {{follower.username}} has started following you
+                </li>
+            </div>
+
+            <div ng-show="model.noEventsMessage">
+                {{model.noEventsMessage}}
+            </div>
+            <div ng-show="model.events">
+                <h3>Your upcoming concerts</h3>
+                <li ng-repeat="event in model.events" class="list-group-item">
+                    You will be attending the concert at {{event.venue.name}} on {{event.datetime|date}}
+                </li>
+            </div>
+
+
+        </div>
+    </div>
+        <!--<div class="row">
         <div class="col-sm-4">
             <button type="button" ng-click="model.renderFollowers(model.userId)"
                     class="form-control btn btn-primary">View Followers</button>
@@ -98,7 +167,7 @@
                 </li>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
 
@@ -107,13 +176,3 @@
 
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <p class="navbar-text pull-right">
-            <a href="#!/profile" class="navbar-link">
-                <span class="glyphicon glyphicon-user ">
-                </span>
-            </a>
-        </p>
-    </div>
-</nav>

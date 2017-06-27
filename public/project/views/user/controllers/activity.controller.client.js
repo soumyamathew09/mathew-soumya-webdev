@@ -9,6 +9,7 @@
 
         model.userId = currentUser._id;
         model.follow = follow;
+        model.logout = logout;
         model.unfollow = unfollow;
         model.searchUser = searchUser;
         model.renderFollowers = renderFollowers;
@@ -23,9 +24,22 @@
 
         function renderUser(user) {
             model.user = user;
+            isArtist(user);
+            isFan(user);
+        }
+
+        function isFan(user) {
+            model.isFan = user.roles.includes("FAN");
+        }
+
+        function isArtist(user) {
+            if(user.roles.includes("ARTIST")){
+                    model.isArtist = true;
+                }
         }
 
         function renderFollowers(userId) {
+            clearPreviousResults();
             UserService.findAllFollowers(userId)
                 .then(function (followers) {
                     if(followers.length >0){
@@ -40,6 +54,7 @@
         }
 
         function renderFollowing(userId) {
+            clearPreviousResults();
             UserService.findAllFollowing(userId)
                 .then(function (following) {
                     if(following.length >0){
@@ -52,6 +67,15 @@
                 });
         }
 
+        function clearPreviousResults() {
+            model.followers = null;
+            model.following = null;
+            model.nofollowingMsg = null;
+            model.nofollowersMsg = null;
+            model.events = null;
+            model.noEventsMessage = null;
+
+        }
         function follow(followingId) {
             return UserService.follow(model.user,followingId)
                 .then(function () {
@@ -76,6 +100,7 @@
         }
 
         function renderAttending(userId) {
+            clearPreviousResults();
             UserService.findAllEventsAttending(userId)
                 .then(function (events) {
                     if(events.length > 0){
@@ -109,7 +134,13 @@
             }
         }
 
-
+        function logout() {
+            UserService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                });
+        }
 
         function showFollowingUsersActivity() {
             $location.url('/following');

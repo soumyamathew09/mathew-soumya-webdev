@@ -15,7 +15,6 @@ var userSchema = mongoose.Schema({
         },
 
         email: String,
-        phone: String,
         location: Number,
         dateCreated:{type:Date, default: Date.now},
         following:[{type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}],

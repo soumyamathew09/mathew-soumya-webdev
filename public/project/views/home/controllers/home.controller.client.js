@@ -135,9 +135,10 @@
             UserService.findAllFollowing(currentUser._id)
                 .then(function (following) {
                     model.following = following;
-                    model.followingArtists = [];
-                    renderFollowingUsersInformation(0,model.following);
-
+                    if(following.length>0) {
+                        model.followingArtists = [];
+                        renderFollowingUsersInformation(0, model.following);
+                    }
                 });
         }
 
