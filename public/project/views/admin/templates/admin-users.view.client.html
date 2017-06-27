@@ -14,14 +14,13 @@
         </div>
     </div>
 </nav>
-
 <div class=" container-fluid">
-    <h1>List Of Users</h1>
+    <h2>User List</h2>
         <ul class="list-group">
             <li class="list-group-item active">
                 <div class="row">
                     <div class="col-xs-3">
-                    UserName
+                    Username
                     </div>
                     <div class="col-xs-3">
                     First Name
@@ -30,13 +29,13 @@
                     Last Name
                     </div>
                     <div class="col-xs-3">
-                        Roles (Not Editable)
+                        Role (Not Editable)
                     </div>
                 </div>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-nowrap">
                 <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
-                <div class="row">
+                <div class="row ">
                     <div class="col-xs-3">
                         <input ng-model="model.newuser.username"
                                 class="form-control">

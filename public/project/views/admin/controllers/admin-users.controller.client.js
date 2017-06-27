@@ -46,33 +46,46 @@
         }
 
         function deleteUser(userId) {
-            UserService.deleteUser(userId)
-                .then( renderAllUsers());
+            if( userId !== currentUser._id){
+                UserService.deleteUser(userId)
+                    .then( renderAllUsers());
+            }
+            else{
+                model.error= 'You cannot delete yourself, please go to your profile page and unregister to delete your account'
+            }
         }
 
         function createUser(newUser) {
-            UserService
-                .findUserByUsername(newUser.username)
-                .then(
-                    function (user) {
-                        if (user !== null) {
-                            showErrorMessage();
-                        }
-                        else {
+            if (! newUser.username) {
+                showErrorMessage('You must enter a username for the new user');
+            }
+            else if(typeof newUser.roles === "undefined"){
+                showErrorMessage('You must select a role for the new user');
+            }
+            else {
+                UserService
+                    .findUserByUsername(newUser.username)
+                    .then(
+                        function (user) {
+                            if (user !== null) {
+                                showErrorMessage('Sorry this username is taken');
+                            }
+                            else {
+                                UserService.createUser(newUser)
+                                    .then(renderAllUsersAfterCreate());
+                            }
+                        },
+                        function () {
                             UserService.createUser(newUser)
                                 .then(renderAllUsersAfterCreate());
                         }
-                    },
-                    function () {
-                        UserService.createUser(newUser)
-                            .then(renderAllUsersAfterCreate());
-                    }
-                );
+                    );
 
+            }
         }
 
-        function showErrorMessage(){
-            model.error = 'Sorry this username is taken';
+        function showErrorMessage(text){
+            model.error = text;
             return;
         }
 

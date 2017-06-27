@@ -9,16 +9,18 @@
 
         model.uid = currentUser._id;
         model.deletePost = deletePost;
+        model.selectPost = selectPost;
+        model.updatePost = updatePost;
 
         function init() {
             renderAllPosts();
-
         }
         init();
 
         function renderAllPosts() {
             PostService.findAllPost()
                 .then(function (posts) {
+                    model.post=[];
                     model.posts = posts;
                 });
         }
@@ -28,6 +30,14 @@
                 .then( renderAllPosts);
         }
 
+        function selectPost(post) {
+            model.post = angular.copy(post);
+        }
+
+        function updatePost(post) {
+            PostService.updatePost(post._id,post)
+                .then(renderAllPosts());
+        }
 
     }
 })();
