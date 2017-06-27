@@ -62,7 +62,10 @@
             .when('/search',{
                 templateUrl: 'views/search/templates/search.view.client.html',
                 controller: 'SearchController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve:{
+                    currentUser: checkUserOrAnonymous
+                }
             }).when('/following',{
                 templateUrl: 'views/user/templates/following.view.client.html',
                 controller: 'FollowingController',
