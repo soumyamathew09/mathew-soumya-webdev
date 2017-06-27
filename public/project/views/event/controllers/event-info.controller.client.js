@@ -54,7 +54,7 @@
 
 
         function isFan(user) {
-            model.isFan = user.roles.includes("FAN");
+            model.isFan = (user.roles.includes("FAN") || user.roles.includes("ADMIN"));
         }
 
         function isArtist(user) {
@@ -91,7 +91,7 @@
                     });
             }
             else
-                if(model.isFan){
+                if(model.isFan || model.isAdmin){
                 PostService.findAllPostForEvent(eventId)
                     .then(function (posts) {
                         if(posts.length ===0){

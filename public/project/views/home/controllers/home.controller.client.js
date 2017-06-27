@@ -26,6 +26,7 @@
             if(!model.user.anonymous){
                 isArtist(currentUser);
                 isFan(currentUser);
+                isAdmin(currentUser);
                 isUnlinkedUser(currentUser);
             }
             else{
@@ -89,6 +90,10 @@
         function isFan(user) {
             model.isFan = user.roles.includes("FAN");
             renderFollowing();
+        }
+
+        function isAdmin(user) {
+            model.isAdmin = user.roles.includes("ADMIN");
         }
 
         function isUnlinkedUser(user) {
