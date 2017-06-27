@@ -59,7 +59,7 @@
         function renderFollowingUsersInformation(index,users) {
            if(index<users.length){
                 var user = users[index];
-                if(user.roles.includes("FAN")){
+                if(user.roles.includes("FAN") || user.roles.includes("ADMIN")){
                     if(user.attending.length >0){
                         EventService.findEventById(user.attending[user.attending.length-1])
                             .then(function (event) {

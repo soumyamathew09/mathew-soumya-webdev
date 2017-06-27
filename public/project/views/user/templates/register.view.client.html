@@ -41,16 +41,18 @@
                id = "verify"
                class="form-control"
                placeholder="Verify Password"/>
-            <label class="radio-inline">
-                    <input type="radio"
-                           value="FAN"
-                        ng-model="userType">Fan</label>
-            <label class="radio-inline">
-                    <input type="radio"
-                           value="ARTIST"
-                        ng-model="userType">Artist</label>
-        <a ng-click="model.register(username,password,password2,userType)"
-           class="btn btn-primary btn-block">Register</a>
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary"
+                        ng-click="model.register(username,password,password2,'FAN')">
+                    Register as a Fan</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary"
+                        ng-click="model.register(username,password,password2,'ARTIST')">
+                    Register as an Artist</button>
+            </div>
+        </div>
         <a class="btn btn-danger  btn-block"
            href="#!/login">Cancel</a>
     </div>
