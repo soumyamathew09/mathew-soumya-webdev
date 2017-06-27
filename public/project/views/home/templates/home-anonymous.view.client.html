@@ -5,16 +5,18 @@
         <a href="#!/register" class="btn btn-lg btn-success">Sign up </a>
     </div>
 </div>
-<h3 class="wd-white-text">Here are a few artists that have recently joined ConcertFever</h3>
-<div class="row">
-    <div class=" container wd-body-container">
-        <div class="col-xs-4" ng-repeat="artist in model.newArtists" >
-            <div>
-                <img ng-click="model.fetchArtistEvents(artist.bitName)"
-                     class="img-responsive img-thumbnail "
-                     ng-src="{{artist.imageURL}}"/>
+<div ng-show="model.newArtists">
+    <h3 class="wd-white-text">Here are a few artists that have recently joined ConcertFever</h3>
+    <div class="row">
+        <div class=" container wd-body-container">
+            <div class="col-xs-4" ng-repeat="artist in model.newArtists" >
+                <div>
+                    <img ng-click="model.fetchArtistEvents(artist.bitName)"
+                         class="img-responsive img-thumbnail "
+                         ng-src="{{artist.imageURL}}"/>
+                </div>
+                <div>{{artist.bitName}}</div>
             </div>
-            <div>{{artist.bitName}}</div>
         </div>
-    </div>
+</div>
 </div>

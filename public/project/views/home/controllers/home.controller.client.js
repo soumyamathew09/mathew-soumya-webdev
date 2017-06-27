@@ -66,7 +66,9 @@
         function fetchNewArtists() {
             UserService.findNewArtists()
                 .then(function (artists) {
-                    model.newArtists = artists;
+                    if(artists.length >0){
+                        model.newArtists = artists;
+                    }
                 })
 
 
