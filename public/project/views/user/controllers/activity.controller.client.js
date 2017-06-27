@@ -26,10 +26,15 @@
             model.user = user;
             isArtist(user);
             isFan(user);
+            isAdmin(user);
         }
 
         function isFan(user) {
             model.isFan = user.roles.includes("FAN");
+        }
+
+        function isAdmin(user) {
+            model.isAdmin = user.roles.includes("ADMIN");
         }
 
         function isArtist(user) {
