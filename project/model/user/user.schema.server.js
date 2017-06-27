@@ -23,7 +23,8 @@ var userSchema = mongoose.Schema({
         attending:[{type: mongoose.Schema.Types.ObjectId, ref: "EventModel"}],
         likedPosts:[{type: mongoose.Schema.Types.ObjectId, ref: "PostModel"}],
         bitName: String,
-        bitId: Number},
+        bitId: Number,
+        imageURL: String},
         {collection: "project_user"});
 
 module.exports = userSchema;

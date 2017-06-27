@@ -14,7 +14,6 @@
             function searchArtistsByName(searchText) {
                 MusicService.searchArtistsByName(searchText)
                     .then(function (response) {
-                        console.log(response.data.Artists)
                         model.results = response.data.Artists;
                         model.artist = '';
                     });

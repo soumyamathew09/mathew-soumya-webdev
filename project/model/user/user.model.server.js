@@ -10,6 +10,7 @@ var postModel = require('../post/post.model.server');
 
 userModel.createUser = createUser;
 userModel.findAllUsers = findAllUsers;
+userModel.findNewArtists =findNewArtists;
 userModel.findUserById = findUserById;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
@@ -42,6 +43,9 @@ function findAllUsers() {
     return userModel.find();
 }
 
+function findNewArtists() {
+    return userModel.find({roles:["ARTIST"]}).sort({dateCreated: -1})
+}
 function findUserById(userId) {
     return userModel.findById(userId);
 }

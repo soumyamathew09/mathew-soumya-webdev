@@ -26,6 +26,7 @@
     app.get ('/api/project/user/:userId', findUserById);
     app.get ('/api/project/bituser/:bitId', findUserByBitId);
     app.get ('/api/project/admin/user',isAdmin, findAllUsers);
+    app.get ('/api/project/newartist', findNewArtists);
     app.get ('/api/project/user', findUser);
     app.post('/api/project/user',isAdmin, createUser);
     app.put('/api/project/follow/:followingId', addFollowing);
@@ -95,6 +96,14 @@
                 res.json(doc);
             });
 
+    }
+
+    function findNewArtists(req,res) {
+        userModel.findNewArtists()
+            .then(function (artists) {
+                res.json(artists);
+                return;
+            });
     }
 
     function findAllUsers(req, res) {

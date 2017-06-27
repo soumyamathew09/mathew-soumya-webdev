@@ -77,9 +77,17 @@
                         .then(function (result) {
                             if(result.length === 0) {
 
-                                model.user.firstName = user.name;
+                                var name = user.name.split(' ');
+                                if(name.length > 1) {
+                                    model.user.firstName = name[0];
+                                    model.user.lastName = name[name.length - 1];
+                                }
+                                else{
+                                    model.user.firstName = user.name;
+                                }
                                 model.user.bitId = user.id;
                                 model.user.bitName = user.name;
+                                model.user.imageURL = user.thumb_url;
                                 renderUser(model.user);
                                 model.error="";
                                 model.artistImportMessage = "Please verify the account details below and click update to save profile. You will not be allowed to edit this later."

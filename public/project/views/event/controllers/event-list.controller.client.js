@@ -27,7 +27,12 @@
         init();
 
         function renderEvents(events) {
-            model.events = events;
+            if(events.length > 0){
+                model.events = events;
+            }
+            else{
+                model.message = model.artistName + " doesn't have any upcoming concerts!";
+            }
         }
 
 

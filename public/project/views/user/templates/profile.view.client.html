@@ -25,12 +25,20 @@
         </div>
         <form>
             <div ng-show="model.isArtist && model.isUnlinkedBitUser" class="form-group">
-                <label for="bitName">Bandsintown Account Name</label>
+                <div class = "row">
+
+                    <div class="col-xs-6">
+                    <label for="bitName">Bandsintown Account Name</label>
                 <input ng-model="model.searchBitName"
                         type="text" class="form-control" id="bitName" placeholder=""
                 value="">
                 <a ng-click="model.validateBitAccount(model.searchBitName)"
                    class="btn btn-success btn-block">Import User</a>
+                    </div>
+                    <div class="col-xs-6">
+                        <img ng-src="{{model.user.imageURL}}" />
+                    </div>
+                </div>
             </div>
             <div ng-show="model.artistImportMessage" class="alert alert-info">
                 {{model.artistImportMessage}}
@@ -86,7 +94,7 @@
         <a ng-click="model.updateUser(model.user)"
            class="btn btn-success btn-block">Update</a>
         <a ng-click="model.unregister()"
-           class="btn btn-danger btn-block">Unregister</a>
+           class="btn btn-danger btn-block">Delete Account</a>
         <a class="btn btn-primary btn-block"
            href="#!/activity">Activity</a>
     </div>

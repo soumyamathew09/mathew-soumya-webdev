@@ -9,7 +9,7 @@
                 </a>
             </p>
             <a class="navbar-brand" >
-                Concert List
+                {{model.artistName}}'s Concert List
             </a>
         </div>
     </div>
@@ -39,7 +39,9 @@
                 </div>
             </div>
         </li>
-
+        <li ng-show="model.message" class="list-group-item text-center">
+            {{model.message}}
+        </li>
         <li ng-repeat="event in model.events" class="list-group-item events-list"
             ng-click=model.fetchEvent(event)>
             <div class="row">

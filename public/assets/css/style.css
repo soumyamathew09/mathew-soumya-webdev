@@ -276,8 +276,10 @@ section:nth-of-type(odd) {
 .overlay-img {
     background: rgba(194, 201, 204, 0.3);
     width: 100%;
+    /*
     padding-top: 100px;
-    padding-bottom: 100px;
+    */
+    padding-bottom: 135px;
     color: #ffffff;
 }
 .no-padding {
@@ -376,7 +378,7 @@ input:-ms-input-placeholder {
 
 
 .home-bg{
-    background: url(../images/grafica_advanxedesign.jpg) no-repeat center top fixed;
+    background: url(https://www.qdtricks.net/wp-content/uploads/2016/05/latest-1080-wallpaper.jpg) no-repeat center top fixed;
 	min-height:700px;
     -moz-background-size: cover;
     -webkit-background-size: cover;
@@ -432,8 +434,8 @@ input:-ms-input-placeholder {
 
 
 .home-bg .header-details{
-	padding-top:220px;
-	color:#314a5b;
+	padding-top:420px;
+	color:#58363b;
 }
 .home-bg .header-details h1{
 	text-transform:uppercase;
@@ -441,6 +443,10 @@ input:-ms-input-placeholder {
 	font-size:48px;
 	margin-bottom:20px;
 	line-height: 55px;
+}
+.home-bg .header-details h2{
+	font-family: "DomaineText",Georgia,serif;
+    font-style: italic;
 }
 .home-bg .header-details h1 i{
 	font-size:7px;
@@ -469,7 +475,7 @@ input:-ms-input-placeholder {
 }
 
 .promotion {
-	color:#465065;
+	color:#565656;
 }
 .promotion h1{
 	text-transform:uppercase;

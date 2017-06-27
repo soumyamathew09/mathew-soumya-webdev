@@ -6,7 +6,12 @@
     function configuration($routeProvider) {
         $routeProvider
             .when('/home',{
-                templateUrl: 'home.html'
+                templateUrl: 'views/home/templates/home.view.client.html',
+                controller: 'HomeController',
+                controllerAs: 'model',
+                resolve:{
+                    currentUser: checkUserOrAnonymous
+                }
             })
             .when('/login',{
             templateUrl: 'views/user/templates/login.view.client.html',
@@ -109,6 +114,27 @@
                         deferred.reject();
                         $location.url('/login');
                     } else {
+                        deferred.resolve(user);
+                    }
+                });
+
+            return deferred.promise;
+        }
+        function checkUserOrAnonymous(UserService, $q, $location) {
+            var deferred = $q.defer();
+
+            UserService
+                .loggedin()
+                .then(function (user) {
+                    if(user === '0') {
+                        /*deferred.reject();
+                        $location.url('/login');*/
+                        var user = {
+                            anonymous:true
+                        }
+                        deferred.resolve(user)
+                    } else {
+                        user.anonymous = false
                         deferred.resolve(user);
                     }
                 });

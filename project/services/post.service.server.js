@@ -109,7 +109,7 @@ function likePost(req,res) {
     var userId = user.userId;
     return postModel.likePost(postId,userId)
         .then(function () {
-            userModel.likePost(userId,postId)
+           return userModel.likePost(userId,postId)
                 .then(function () {
                     res.sendStatus(200);
                     return;
@@ -124,7 +124,7 @@ function unlikePost(req,res) {
     var userId = user.userId;
     return postModel.unlikePost(postId,userId)
         .then(function () {
-            userModel.unlikePost(userId,postId)
+            return userModel.unlikePost(userId,postId)
                 .then(function () {
                     res.sendStatus(200);
                     return;

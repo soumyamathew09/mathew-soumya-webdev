@@ -26,6 +26,7 @@
         this.findAllEventsAttending = findAllEventsAttending;
         this.findUserByBitId = findUserByBitId;
         this.findFollowingUsersInformation = findFollowingUsersInformation;
+        this.findNewArtists = findNewArtists;
 
 
         function findUserByCredentials(username, password) {
@@ -183,6 +184,14 @@
 
         function findFollowingUsersInformation(userId) {
             var url = '/api/project/followingInfo/' + userId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function findNewArtists() {
+            var url = '/api/project/newartist';
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

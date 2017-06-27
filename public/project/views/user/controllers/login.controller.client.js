@@ -25,7 +25,7 @@
                    .then(function (found) {
                            if (found !== null) {
                                var user = found;
-                               $location.url("/profile");
+                               $location.url("/home");
                            } else {
                                model.message = "Incorrect username or password. Please try again.";
                            }

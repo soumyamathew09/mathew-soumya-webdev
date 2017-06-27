@@ -37,7 +37,7 @@ img{
 #home-caption{
     font-size: 1.4rem;
     font-weight: 200;
-    max-width: 60rem;
+    max-width: 80rem;
     margin: 0 auto;
     text-align: center;
 }
@@ -45,10 +45,20 @@ img{
 #home-caption h1{
     color: white;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 h1{
     color: #6c6f73;
     text-transform: uppercase;
+}
+
+h3.wd-white-text{
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background: black;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
 }
