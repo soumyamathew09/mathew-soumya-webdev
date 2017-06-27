@@ -25,6 +25,7 @@
         this.unfollow = unfollow;
         this.findAllEventsAttending = findAllEventsAttending;
         this.findUserByBitId = findUserByBitId;
+        this.findUserByBitName = findUserByBitName;
         this.findFollowingUsersInformation = findFollowingUsersInformation;
         this.findNewArtists = findNewArtists;
 
@@ -176,6 +177,14 @@
 
         function findUserByBitId(bitId) {
             var url = '/api/project/bituser/'+bitId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function findUserByBitName(bitName) {
+            var url = '/api/project/bituserName/'+bitName;
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

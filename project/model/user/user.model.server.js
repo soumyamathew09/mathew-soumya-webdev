@@ -26,6 +26,7 @@ userModel.removeFollowing = removeFollowing;
 userModel.addEvent = addEvent;
 userModel.findAllEventsAttending = findAllEventsAttending;
 userModel.findUserByBitId = findUserByBitId;
+userModel.findUserByBitName = findUserByBitName;
 userModel.removeEvent = removeEvent;
 userModel.likePost = likePost;
 userModel.unlikePost = unlikePost;
@@ -44,8 +45,9 @@ function findAllUsers() {
 }
 
 function findNewArtists() {
-    return userModel.find({roles:["ARTIST"]}).sort({dateCreated: -1})
+    return userModel.find({roles:["ARTIST"], bitId: {$ne: null }}).sort({dateCreated: -1})
 }
+
 function findUserById(userId) {
     return userModel.findById(userId);
 }
@@ -153,6 +155,10 @@ function findAllEventsAttending(userId) {
 
 function findUserByBitId(bitId) {
     return userModel.find({bitId:bitId});
+}
+
+function findUserByBitName(bitName) {
+    return userModel.find({bitName:bitName});
 }
 
 function likePost(userId,postId) {

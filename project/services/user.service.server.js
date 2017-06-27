@@ -25,6 +25,7 @@
 
     app.get ('/api/project/user/:userId', findUserById);
     app.get ('/api/project/bituser/:bitId', findUserByBitId);
+    app.get ('/api/project/bituserName/:bitName', findUserByBitName);
     app.get ('/api/project/admin/user',isAdmin, findAllUsers);
     app.get ('/api/project/newartist', findNewArtists);
     app.get ('/api/project/user', findUser);
@@ -49,7 +50,7 @@
 
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/project/index.html#!/profile',
+            successRedirect: '/project/index.html#!/home',
             failureRedirect: '/project/index.html#!/login'
         }));
 
@@ -363,6 +364,15 @@
                 return;
             })
     }
+    function findUserByBitName(req,res) {
+        var bitName = req.params['bitName'];
+        return userModel.findUserByBitName(bitName)
+            .then(function (user) {
+                res.send(user);
+                return;
+            })
+    }
+
 
 
 

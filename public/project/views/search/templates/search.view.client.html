@@ -16,6 +16,7 @@
                 <li ng-if="model.user.anonymous" class="nav-item "><a href="#!/register">Register</a></li>
                 <li ng-if="model.user.anonymous" class="nav-item"><a href="#!/login">Log In</a></li>
                 <li ng-if="!model.user.anonymous" class="nav-item"><a href="#!/activity">Activity</a></li>
+                <li ng-if="model.isAdmin" class="nav-item"><a href="#!/admin">Admin</a></li>
                 <li ng-if="!model.user.anonymous" class="nav-item"><a href="#!/profile">Profile</a></li>
                 <li ng-if="!model.user.anonymous" class="nav-item"><a ng-click="model.logout()">Logout</a></li>
             </ul>
@@ -59,6 +60,23 @@
                     <a ng-show="model.eventsPresent(model.artist.upcoming_event_count)"
                        class="btn btn-primary btn-block"
                        href="#!/artist/{{model.artist.name}}/event">{{model.events}}</a>
+
+
+                    <div ng-if="!model.searchedUser.alreadyFollowing && !model.user.anonymous">
+                        <a ng-click="model.follow(model.searchedUser._id)"
+                           class="btn btn-success btn-block">Follow </a>
+                    </div>
+                    <div ng-if="model.searchedUser.alreadyFollowing && !model.user.anonymous">
+                        <a ng-click="model.unfollow(model.searchedUser._id)"
+                           class="btn btn-danger btn-block">UnFollow</a>
+                    </div>
+
+
+                    <div ng-show="!model.eventsPresent(model.artist.upcoming_event_count)"
+                        class="alert alert-info" role="alert">
+                        <strong>Oh snap!</strong> Looks like {{model.artist.name}} doesn't have
+                        any concerts coming up. Try searching for another artist.
+                    </div>
                 </div>
             </div>
         </div>
