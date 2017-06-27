@@ -66,6 +66,10 @@
                             model.isFan = true;
                         }
             }
+            else if(user.roles.includes("ADMIN")){
+                model.isArtist = true;
+                model.isAdmin = true;
+            }
         }
 
         function createPost(post) {
@@ -77,7 +81,21 @@
         }
 
         function renderPosts(userId,eventId) {
-            if(model.isArtist) {
+            if(model.isAdmin){
+                PostService.findAllPostForEvent(eventId)
+                    .then(function (posts) {
+                        if(posts.length ===0){
+                            model.posts = posts;
+                            model.noPosts = "The artist hasn't posted anything for this event yet. " +
+                                "Help him out by posting below.";
+                        }
+                        else {
+                            setLikedStatus(posts);
+                        }
+                    });
+            }
+            else
+                if(model.isArtist) {
                 PostService.findAllPostByArtistForEvent(userId, eventId)
                     .then(function (posts) {
                         if(posts.length ===0){
@@ -91,7 +109,7 @@
                     });
             }
             else
-                if(model.isFan || model.isAdmin){
+                if(model.isFan){
                 PostService.findAllPostForEvent(eventId)
                     .then(function (posts) {
                         if(posts.length ===0){

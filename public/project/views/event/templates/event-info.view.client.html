@@ -38,6 +38,13 @@
         <div class="col-sm-4 hidden-xs container-fluid" >
             <img class="container-fluid" ng-src="{{model.event.thumb_url}}">
 
+            <a ng-show="!model.isAttending&& model.isFan" ng-click="model.attendingEvent()"
+               class="btn btn-success btn-block wd-botton-most-element">Attend !!</a>
+
+            <a ng-show="model.isAttending && model.isFan"
+               ng-click="model.notAttendingEvent()"
+               class="btn btn-danger btn-block wd-botton-most-element">Can't make it !!</a>
+
         </div>
         <div class="col-xs-12 col-sm-8" >
             <div ng-show="model.error"
@@ -88,12 +95,7 @@
                 </li>
                 <li ng-show="model.noPosts" class="list-group-item">{{model.noPosts}}</li>
             </div>
-            <a ng-show="!model.isAttending&& model.isFan" ng-click="model.attendingEvent()"
-               class="btn btn-success btn-block wd-botton-most-element">Attend !!</a>
 
-            <a ng-show="model.isAttending && model.isFan"
-               ng-click="model.notAttendingEvent()"
-               class="btn btn-danger btn-block wd-botton-most-element">Can't make it !!</a>
 
             <div ng-show="model.isArtist" class="wd-botton-most-element">
                 <a href="#!/artist/{{model.artistName}}/event/{{model.eventId}}/post"

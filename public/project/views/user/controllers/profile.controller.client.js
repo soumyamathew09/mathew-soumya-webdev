@@ -16,6 +16,7 @@
         function init() {
             renderUser(currentUser);
             isArtist(currentUser);
+            isAdmin(currentUser);
             isUnlinkedUser(currentUser);
         }
         init();
@@ -63,6 +64,10 @@
 
         function isArtist(user) {
             model.isArtist = user.roles.includes("ARTIST");
+        }
+
+        function isAdmin(user) {
+            model.isAdmin = user.roles.includes("ADMIN");
         }
 
         function isUnlinkedUser(user) {
