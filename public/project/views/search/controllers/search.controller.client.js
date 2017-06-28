@@ -44,9 +44,13 @@
             function isLinkedUser(bitArtistName) {
                 UserService.findUserByBitName(bitArtistName)
                     .then(function (user) {
-                        if(user!== null && user.length>0);{
+                        if(user.length > 0){
                             model.searchedUser = user[0];
+                            model.isLinkedSearchUser = true;
                             renderFollowButton(user[0]._id);
+                        }
+                        else{
+                            model.isLinkedSearchUser = false;
                         }
                     });
             }

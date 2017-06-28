@@ -1,10 +1,15 @@
 <div id="home">
     <div id="home-caption">
-        <h1> Welcome back {{model.user.username}}. </h1>
+        <div ng-show="model.followingArtists">
+            <h1> Welcome back {{model.user.username}}!</h1>
+        </div>
+        <div ng-if="model.noFollowers">
+            <h1> Hi {{model.user.username}}!</h1>
+        </div>
     </div>
 </div>
 <div>
-    <div ng-show="model.followingArtists">
+    <div ng-if="model.followingArtists">
     <h3 class="wd-white-text">Here's what your favorite artists have been up to</h3>
 
         <div class=" container wd-body-container-dark">
@@ -29,7 +34,7 @@
                 </div>
                     <div ng-show="artist.followers" class="text-center col-sm-3 hidden-xs">
                         <a href="#!/artist/{{artist.artistName}}/event" >{{artist.artistName}}</a> has
-                        <strong>"{{artist.followers}}"</strong> followers on ConcertFever.
+                        <strong>{{artist.followers}}</strong> followers on ConcertFever.
                     </div>
                     <div ng-show="artist.concerts" class="text-center col-sm-3 hidden-xs">
                         <div>Click below to view more of {{artist.artistName}}'s
@@ -39,5 +44,22 @@
             </div>
         </div>
     </div>
+    </div>
+    <div ng-if="model.noFollowers">
+        <div ng-show="model.newArtists">
+            <h3 class="wd-white-text">Check out the artists that have recently joined ConcertFever</h3>
+            <div class="row">
+                <div class=" container wd-body-container-dark">
+                    <div class="col-xs-4" ng-repeat="artist in model.newArtists" >
+                        <div>
+                            <img ng-click="model.fetchArtistEvents(artist.bitName)"
+                                 class="img-responsive img-thumbnail "
+                                 ng-src="{{artist.imageURL}}"/>
+                        </div>
+                        <h5 class="text-center">{{artist.bitName}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

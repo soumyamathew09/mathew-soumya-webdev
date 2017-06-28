@@ -25,7 +25,7 @@
 </nav>
 <div>
     <div class="container wd-body-container">
-        <h1>Artist Finder</h1>
+        <h2>Artist Finder</h2>
         <div class="input-group">
             <input ng-model="searchText"
                    type="text"
@@ -62,11 +62,13 @@
                        href="#!/artist/{{model.artist.name}}/event">{{model.events}}</a>
 
 
-                    <div ng-if="!model.searchedUser.alreadyFollowing && !model.user.anonymous">
+                    <div ng-if="!model.searchedUser.alreadyFollowing && !model.user.anonymous
+                    && model.user.isLinkedSearchUser">
                         <a ng-click="model.follow(model.searchedUser._id)"
                            class="btn btn-success btn-block">Follow </a>
                     </div>
-                    <div ng-if="model.searchedUser.alreadyFollowing && !model.user.anonymous">
+                    <div ng-if="model.searchedUser.alreadyFollowing && !model.user.anonymous
+                        && model.user.isLinkedSearchUser">
                         <a ng-click="model.unfollow(model.searchedUser._id)"
                            class="btn btn-danger btn-block">UnFollow</a>
                     </div>

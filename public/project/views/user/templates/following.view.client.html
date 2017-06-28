@@ -57,6 +57,8 @@
             </span> Go Back to Activity Page
         </a>
     <li class="list-group-item active"><h4>Here's what your friends have been upto</h4></li>
+    <li ng-if="model.noFriends" class="list-group-item"> Looks like you're not following anyone.
+        Use the search bar above to find other users.</li>
     <li ng-repeat="user in model.usersInfo" class="list-group-item">
         <div ng-include="model.userInfoUrl(user)"></div>
     </li>

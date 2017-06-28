@@ -29,6 +29,13 @@
         function renderFollowing() {
             UserService.findAllFollowing(currentUser._id)
                 .then(function (following) {
+                    if(following.length === 0){
+                        model.noFriends = true;
+                    }
+                    else
+                    {
+                        model.noFriends = false;
+                    }
                     model.following = following;
                     model.usersInfo = [];
                     renderFollowingUsersInformation(0,model.following);
@@ -94,6 +101,10 @@
                                         index= index+1;
                                         renderFollowingUsersInformation(index,users)
                                     });
+                            }
+                            else{
+                                index= index+1;
+                                renderFollowingUsersInformation(index,users);
                             }
                         })
                 }

@@ -144,6 +144,10 @@
                         model.followingArtists = [];
                         renderFollowingUsersInformation(0, model.following);
                     }
+                    else{
+                        model.noFollowers = true;
+                        fetchNewArtists();
+                    }
                 });
         }
 
@@ -165,7 +169,7 @@
                                             event: event,
                                             post: p,
                                             followers: user.followers.length,
-                                            concerts:true,
+                                            concerts:true   ,
                                             liked: p.likes.includes(model.userId)
                                         }
                                         model.followingArtists.push(activity);
@@ -194,7 +198,14 @@
                 }
             }
             else{
-                return model.followingArtists;
+                if(model.followingArtists.length === 0){
+                    model.followingArtists=false;
+                    model.noFollowers = true;
+                    fetchNewArtists();
+                }
+                else{
+                    return model.followingArtists;
+                }
             }
         }
 
