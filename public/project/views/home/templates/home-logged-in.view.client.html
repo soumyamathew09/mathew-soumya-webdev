@@ -44,22 +44,23 @@
             </div>
         </div>
     </div>
-    </div>
-    <div ng-show="model.newArtists">
-        <div class="row">
-            <div class=" container wd-body-container-dark">
-                <h3 class="wd-white-text">Check out the artists that have recently joined ConcertFever</h3>
-                <div class="col-xs-4" ng-repeat="artist in model.newArtists" >
-                    <div>
-                        <img ng-click="model.fetchArtistEvents(artist.bitName)"
-                             class="img-responsive img-thumbnail "
-                             ng-src="{{artist.imageURL}}"/>
+        <div ng-show="model.newArtists">
+            <div class="row">
+                <div class=" container wd-body-container-dark">
+                    <h3 class="wd-white-text">Check out the artists that have recently joined ConcertFever</h3>
+                    <div class="col-xs-4" ng-repeat="artist in model.newArtists" >
+                        <div>
+                            <img ng-click="model.fetchArtistEvents(artist.bitName)"
+                                 class="img-responsive img-thumbnail "
+                                 ng-src="{{artist.imageURL}}"/>
+                        </div>
+                        <h5 class="text-center">{{artist.bitName}}</h5>
                     </div>
-                    <h5 class="text-center">{{artist.bitName}}</h5>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div ng-if="model.noFollowers">
         <div ng-show="model.newArtists">
