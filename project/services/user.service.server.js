@@ -385,50 +385,5 @@
             })
     }
 
-    function findFollowingUsersInformation(req,res) {
-        var userId = req.params['userId'];
-        var results = [];
-        return userModel.findAllFollowing(userId)
-            .then(function (users) {
-                for(var u=0;u<users.length;u++){
-                    var user = users[u];
-                    if(user.roles.includes("FAN")){
-                        if(user.attending.length >0){
-                            postModel.findAllPostByArtist(userId)
-                            //return eventModel.findEventById(user.attending[length-1])
-                                .then(function (event) {
-                                    var activity ={
-                                        username: user.name,
-                                        role: "FAN",
-                                        event: event
-                                    }
-                                    results.push(activity);
-                                });
-                        }
-                    }
-                    else
-                        if(user.roles.includes("ARTIST")){
-                        postModel.findAllPostByArtist(user._id)
-                            .then(function (posts) {
-                                if(posts.length >0){
-                                    eventModel.findEventById(posts[0]._event)
-                                        .then(function (event) {
-                                            var activity ={
-                                                username: user.name,
-                                                role: "ARTIST",
-                                                event: event,
-                                                post: posts[0].description
-                                            }
-                                            results.push(activity);
-                                        });
-                                }
-                            })
-
-                    }
-                }
-                res.json(results);
-                return;
-            });
-    }
 
 

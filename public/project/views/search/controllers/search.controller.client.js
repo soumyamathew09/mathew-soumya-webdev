@@ -34,6 +34,13 @@
                     .then(function (response) {
                         model.results = response.data.Artists;
                         model.artist = '';
+                        if(model.results.length ===0){
+                            model.apiError = 'We were not able to find any artists by the name '
+                            + searchText +". Please try searching for another artist."
+                        }
+                        else{
+                            model.apiError='';
+                        }
                     });
             }
 

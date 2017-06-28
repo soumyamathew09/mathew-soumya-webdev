@@ -30,13 +30,14 @@
             <input ng-model="searchText"
                    type="text"
                    class="form-control"
-                   placeholder="Enter the artist name">
+                   placeholder="Ex. Coldplay, Bruno Mars, Lady Gaga etc. ">
             <span class="input-group-btn">
             <a ng-click="model.searchArtistsByName(searchText)" class="btn btn-default" type="button">
                 <span class="glyphicon glyphicon-search"></span>
             </a>
         </span>
         </div>
+        <div ng-show="model.apiError" class="alert alert-info">{{model.apiError}}</div>
         <div class="row">
             <div class="col-xs-6 " >
                 <ul ng-repeat="artist in model.results" class="list-group" >

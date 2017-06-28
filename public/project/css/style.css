@@ -40,6 +40,9 @@ body {
     margin-top: 20px;
 }
 
+div.btn-group.btn-group-justified{
+margin-bottom: 5px;
+}
 
 .navbar-default > div {
     background-color: #222020;

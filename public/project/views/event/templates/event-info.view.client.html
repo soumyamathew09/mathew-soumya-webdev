@@ -39,11 +39,11 @@
             <img class="container-fluid" ng-src="{{model.event.thumb_url}}">
 
             <a ng-show="!model.isAttending&& model.isFan" ng-click="model.attendingEvent()"
-               class="btn btn-success btn-block wd-botton-most-element">Attend !!</a>
+               class="btn btn-success btn-block wd-botton-most-element">I'm Attending</a>
 
             <a ng-show="model.isAttending && model.isFan"
                ng-click="model.notAttendingEvent()"
-               class="btn btn-danger btn-block wd-botton-most-element">Can't make it !!</a>
+               class="btn btn-danger btn-block wd-botton-most-element">Can't make it.</a>
 
         </div>
         <div class="col-xs-12 col-sm-8 hidden-xs" >

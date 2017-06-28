@@ -27,7 +27,7 @@
     <input ng-model="searchUser"
            type="text"
            class="form-control"
-           placeholder="Who would you like to follow/unfollow ?">
+           placeholder="Enter the username of the user you'd like to follow/unfollow">
     <span class="input-group-btn">
             <a ng-click="model.searchUser(searchUser)" class="btn btn-default" type="button">
                 <span class="glyphicon glyphicon-search"></span>
@@ -73,8 +73,6 @@
                     ng-click="model.renderAttending(model.userId)">Attending</button>
             <a class="btn btn-primary"
                href="#!/following">News Feed</a>
-            <a class="btn btn-success"
-               href="#!/search">Search </a>
             <a class="btn btn-info"
                ng-show="model.isArtist"
                href="#!/myevents">My Concerts</a>

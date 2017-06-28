@@ -14,6 +14,7 @@
         model.searchUser = searchUser;
         model.likePost = likePost;
         model.unlikePost = unlikePost;
+        model.logout = logout;
 
         function init() {
             renderUser(currentUser);
@@ -25,6 +26,14 @@
             model.user = user;
         }
 
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                });
+        }
 
         function renderFollowing() {
             UserService.findAllFollowing(currentUser._id)
