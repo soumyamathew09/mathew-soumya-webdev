@@ -62,18 +62,16 @@
                        class="btn btn-primary btn-block"
                        href="#!/artist/{{model.artist.name}}/event">{{model.events}}</a>
 
-
-                    <div ng-if="!model.searchedUser.alreadyFollowing && !model.user.anonymous
-                    && model.user.isLinkedSearchUser">
+                <div ng-show = "model.showFollowButton">
+                    <div ng-if="!model.showFollowValue">
                         <a ng-click="model.follow(model.searchedUser._id)"
                            class="btn btn-success btn-block">Follow </a>
                     </div>
-                    <div ng-if="model.searchedUser.alreadyFollowing && !model.user.anonymous
-                        && model.user.isLinkedSearchUser">
+                    <div ng-if="model.showFollowValue">
                         <a ng-click="model.unfollow(model.searchedUser._id)"
                            class="btn btn-danger btn-block">UnFollow</a>
                     </div>
-
+                </div>
 
                     <div ng-show="!model.eventsPresent(model.artist.upcoming_event_count)"
                         class="alert alert-info" role="alert">

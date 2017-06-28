@@ -54,10 +54,12 @@
                         if(user.length > 0){
                             model.searchedUser = user[0];
                             model.isLinkedSearchUser = true;
+                            model.showFollowButton = true;
                             renderFollowButton(user[0]._id);
                         }
                         else{
                             model.isLinkedSearchUser = false;
+                            model.showFollowButton = '';
                         }
                     });
             }
@@ -67,6 +69,7 @@
                     .then(function (response) {
                         console.log(response.data);
                         if(response.data !== undefined){
+                            model.showFollowButton= '';
                             model.error = '';
                             model.artist =response.data;
                             if(!model.user.anonymous){
@@ -75,6 +78,7 @@
                         }
 
                     }, function () {
+                        model.showFollowButton= '';
                         model.artist = '';
                         model.error = "Unable to find information on "+ searchText ;
                         model.searchedUser = false;
@@ -107,8 +111,8 @@
             function renderFollowButton(followId) {
                 UserService.findUserById(model.userId)
                     .then(function (user) {
-                        model.searchedUser.alreadyFollowing = user.following.includes(followId)
-                            && !model.user.anonymous;
+                        model.showFollowValue = user.following.includes(followId)
+                            && !model.user.anonymous && model.isLinkedSearchUser;
                     });
             }
 
