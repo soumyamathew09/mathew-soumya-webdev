@@ -10,6 +10,7 @@
         model.artistName = currentUser.bitName;
         model.addEvent = addEvent;
         model.fetchEvent = fetchEvent;
+        model.logout = logout;
 
         function init(){
             EventService
@@ -47,6 +48,14 @@
                         $location.url('/artist/'+ model.artistName + '/event/'+event._id);
                     }
                 )
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                });
         }
 
         }

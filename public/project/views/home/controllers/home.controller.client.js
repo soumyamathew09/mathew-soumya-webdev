@@ -28,6 +28,7 @@
                 isFan(currentUser);
                 isAdmin(currentUser);
                 isUnlinkedUser(currentUser);
+                fetchNewArtists();
             }
             else{
                 fetchNewArtists();

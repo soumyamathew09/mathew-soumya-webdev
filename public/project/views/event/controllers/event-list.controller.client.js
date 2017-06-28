@@ -8,12 +8,14 @@
 
         model.artistName = $routeParams['artistId'];
         model.fetchEvent = fetchEvent;
+        model.logout = logout;
 
         function init(){
             UserService.loggedin()
                 .then(function (user) {
                     if(user==='0'){
-                        model.info = "Sign up with ConcertFever to  have access to all event information"
+                        model.info = "Sign up with ConcertFever to  have access to all event information";
+                        model.isAnonymous = true;
                     }
                     else {
                         model.currentUser = user;
@@ -55,6 +57,14 @@
                         $location.url('/artist/'+ model.artistName + '/event/'+event._id);
                     }
                 )
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                });
         }
     }
 })();

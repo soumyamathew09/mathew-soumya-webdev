@@ -15,6 +15,7 @@
         model.notAttendingEvent=notAttendingEvent;
         model.likePost = likePost;
         model.unlikePost = unlikePost;
+        model.logout = logout;
 
         function init(){
 
@@ -189,6 +190,14 @@
                 setLikedStatus(posts);
             }
 
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
+                });
         }
 
 

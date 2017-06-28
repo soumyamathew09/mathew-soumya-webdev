@@ -15,6 +15,10 @@
     Sign Up
     </button>
     </a>
+    <a href ="#!/login"><button  class="button button-success">
+    Log In
+    </button>
+    </a>
 </div>
     <ul class="list-group">
         <li class="list-group-item active " style="background-color: #565054">
@@ -74,17 +78,24 @@
                 </span>
             </a>
         </p>
-        <p class="navbar-text pull-left">
+        <p ng-show="!model.isAnonymous" class="navbar-text pull-left">
             <a href="#!/activity" class="navbar-link">
                 <span class="glyphicon glyphicon-bell ">
                 </span>
             </a>
         </p>
-        <p class="navbar-text pull-right">
+        <p ng-show="!model.isAnonymous" class="navbar-text pull-left">
             <a href="#!/profile" class="navbar-link">
                 <span class="glyphicon glyphicon-user ">
                 </span>
             </a>
         </p>
+        <p ng-show="!model.isAnonymous" class="navbar-text pull-right">
+            <a ng-click="model.logout()" class="navbar-link">
+                <span class="glyphicon glyphicon-log-out ">
+                </span>
+            </a>
+        </p>
+
     </div>
 </nav>
