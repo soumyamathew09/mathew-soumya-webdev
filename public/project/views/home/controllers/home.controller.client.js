@@ -164,6 +164,8 @@
                                             role: "ARTIST",
                                             event: event,
                                             post: p,
+                                            followers: user.followers.length,
+                                            concerts:true,
                                             liked: p.likes.includes(model.userId)
                                         }
                                         model.followingArtists.push(activity);
@@ -176,6 +178,8 @@
                                     username: user.username,
                                     artistName: user.bitName,
                                     imageURL :user.imageURL,
+                                    followers: user.followers.length,
+                                    concerts :true,
                                     role: "ARTIST"
                                 }
                                 model.followingArtists.push(activity);

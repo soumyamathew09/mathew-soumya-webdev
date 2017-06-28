@@ -45,12 +45,13 @@
                     .then(function (user) {
                         if (user !== null) {
                             model.searchedUser = user;
-                            renderFollowButton(user);
+                            renderFollowButton(user._id);
                             model.searchResult = '';
                         }
                         else {
                             model.searchResult = "There is no user with the username " + searchName +
                                 ". Please check the the name and try again."
+                            model.searchedUser='';
                         }
                     });
             }

@@ -6,21 +6,36 @@
 <div>
     <div ng-show="model.followingArtists">
     <h3 class="wd-white-text">Here's what your favorite artists have been up to</h3>
-    <div class="row ">
+
         <div class=" container wd-body-container-dark">
-            <div class="col-xs-4" ng-repeat="artist in model.followingArtists" >
-            <div>
+            <div  ng-repeat="artist in model.followingArtists" >
+                <div class="row ">
+            <div class="col-sm-3 col-xs-6">
                 <img ng-click="model.fetchArtistEvents(artist.artistName)"
                      class="img-responsive img-thumbnail "
                      ng-src="{{artist.imageURL}}"/>
-            </div>
                 <h5 class="text-center">{{artist.artistName}}</h5>
-                <div ng-show="artist.post" class="text-center">
+            </div>
+                <div class="align-middle col-sm-3 col-xs-6">
+                     <div ng-if="artist.post">
                         <a href="#!/artist/{{artist.artistName}}/event" >{{artist.username}}</a> posted
                         <strong>"{{artist.post.description}}"</strong> for the upcoming event at
                         <a href="#!/artist/{{artist.artistName}}/event/{{artist.event._id}}">
                             {{artist.event.venue.name}}</a>
+                     </div>
+                    <div ng-if="!artist.post">
+                        {{artist.username}} hasn't posted anything yet!
+                    </div>
                 </div>
+                    <div ng-show="artist.followers" class="text-center col-sm-3 hidden-xs">
+                        <a href="#!/artist/{{artist.artistName}}/event" >{{artist.artistName}}</a> has
+                        <strong>"{{artist.followers}}"</strong> followers on ConcertFever.
+                    </div>
+                    <div ng-show="artist.concerts" class="text-center col-sm-3 hidden-xs">
+                        <div>Click below to view more of {{artist.artistName}}'s
+                         upcoming concerts</div>
+                        <a href="#!/artist/{{artist.artistName}}/event" class="btn btn-primary">Concerts</a>
+                    </div>
             </div>
         </div>
     </div>
