@@ -44,6 +44,17 @@ div.btn-group.btn-group-justified{
 margin-bottom: 5px;
 }
 
+a.btn.btn-lg.btn-success.home-page{
+    margin-left: 10px;
+    width: 100px;
+}
+
+a.btn.btn-lg.btn-primary.home-page{
+    margin-left: 10px;
+    width: 100px;
+}
+
+
 .navbar-default > div {
     background-color: #222020;
     border-color: #222020;
