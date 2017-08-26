@@ -9,5 +9,5 @@ This repository is created for the Web Development course work (CS5610).
 
 Links:
 1) Hosted environment on Heroku - https://mathew-soumya-webdev.herokuapp.com/
-2) Project Link - https://mathew-soumya-webdev.herokuapp.com/project/index.html
+2) Project Link - https://mathew-soumya-webdev.herokuapp.com/project/#!/home
 3) Assignment Link - https://mathew-soumya-webdev.herokuapp.com/assignment/index.html   
